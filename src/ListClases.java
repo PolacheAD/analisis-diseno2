@@ -43,7 +43,8 @@ public class ListClases extends javax.swing.JFrame {
      */
     public ListClases() {
         initComponents();
-        
+        hoy = LocalDate.now();
+        jLabel7.setText("Fecha: " + hoy.toString());
     }
     
     public XSSFWorkbook crear_libro(){

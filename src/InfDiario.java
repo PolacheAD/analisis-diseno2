@@ -50,6 +50,7 @@ public class InfDiario extends javax.swing.JFrame {
     public InfDiario() {
         initComponents();
         hoy = LocalDate.now();
+        jLabel7.setText("Fecha: " + hoy.toString());
         jTextField2.setText(hoy.toString());
         modelo = (DefaultTableModel) jTable1.getModel();
         contarN();
