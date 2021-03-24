@@ -238,7 +238,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
                 {"Selvin", "20156689318", "85", "3", "2"},
                 {"Sergio Vasquez", "20179963326", "74", "15", "1"},
                 {"Teresa", "20192020223", "70", "15", "5"},
-                {"Yorleny Ramos", "25252525", "87", "3", "0"}
+                {"Yorleny Ramos", "20148896632", "87", "3", "0"}
             },
             new String [] {
                 "Nombre", "No. Cuenta", "Asistencias", "Faltas", "Excusas"
@@ -279,6 +279,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

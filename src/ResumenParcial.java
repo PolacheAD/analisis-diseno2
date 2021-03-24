@@ -173,6 +173,7 @@ public class ResumenParcial extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -305,7 +306,7 @@ public class ResumenParcial extends javax.swing.JFrame {
                 {"Sergio Vasquez", "20165587741", "27", "1", "2"},
                 {"Valentina", "20136698874", "24", "5", "1"},
                 {"Yorleny Ramos", "20192020887", "20", "5", "5"},
-                {"Zoe", "25252525", "29", "1", "0"}
+                {"Zoe", "20205549623", "29", "1", "0"}
             },
             new String [] {
                 "Nombre", "No. Cuenta", "Asistencias", "Faltas", "Excusas"
@@ -346,6 +347,7 @@ public class ResumenParcial extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
