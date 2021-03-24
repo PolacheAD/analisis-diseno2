@@ -195,7 +195,7 @@ public class Principal extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(42, 126, 211));
-        jButton4.setText("Estudiantes con 25% de Inasistencia");
+        jButton4.setText("Estudiantes con Inasistencia Mayor al 25%");
         jButton4.setAutoscrolls(true);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

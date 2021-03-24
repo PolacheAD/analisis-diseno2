@@ -400,7 +400,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Estudiantes con 25% de Inasistencia"/>
+                <Property name="text" type="java.lang.String" value="Estudiantes con Inasistencia Mayor al 25%"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
