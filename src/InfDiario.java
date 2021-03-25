@@ -205,11 +205,11 @@ public class InfDiario extends javax.swing.JFrame {
         jTextField3.setText("0");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("U.V.");
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Listado/Resumen diario");
 
         jTextField4.setEditable(false);
@@ -217,15 +217,15 @@ public class InfDiario extends javax.swing.JFrame {
         jTextField4.setText("3");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Código: ");
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Clase:");
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("Fecha: 13/03/2021");
 
         jTextField1.setEditable(false);
@@ -246,7 +246,7 @@ public class InfDiario extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setText("Inasistencias");
 
         jTable1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -311,17 +311,17 @@ public class InfDiario extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel4.setForeground(new java.awt.Color(65, 105, 225));
         jLabel4.setText("Ingrese fecha:");
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(81, 152, 224));
+        jButton2.setForeground(new java.awt.Color(65, 105, 225));
         jButton2.setText("Buscar");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(81, 152, 224));
+        jButton3.setForeground(new java.awt.Color(65, 105, 225));
         jButton3.setText("Clase anterior");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,7 +331,7 @@ public class InfDiario extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(81, 152, 224));
+        jButton4.setForeground(new java.awt.Color(65, 105, 225));
         jButton4.setText("Clase siguiente");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N

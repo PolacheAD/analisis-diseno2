@@ -129,12 +129,12 @@ public class ListClases extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(81, 152, 224));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Listado de clases del período");
 
         Boton1.setBackground(new java.awt.Color(255, 255, 255));
         Boton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        Boton1.setForeground(new java.awt.Color(81, 152, 224));
+        Boton1.setForeground(new java.awt.Color(65, 105, 225));
         Boton1.setText("Generar Documento de Excel");
         Boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +143,7 @@ public class ListClases extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("Fecha: 13/03/2021");
 
         jTable1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -188,7 +188,7 @@ public class ListClases extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-macos-close-32.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Catedrático: Brénedin Enrique Núñez");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

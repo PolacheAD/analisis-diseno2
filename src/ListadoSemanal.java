@@ -286,11 +286,11 @@ public class ListadoSemanal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Listado semanal de asistencia de la clase");
 
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(81, 152, 224));
+        jButton3.setForeground(new java.awt.Color(65, 105, 225));
         jButton3.setText("Generar reporte");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,11 +299,11 @@ public class ListadoSemanal extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Seleccione la semana que desea consultar:");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("(Año-Mes-Día)");
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -315,7 +315,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Clase:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

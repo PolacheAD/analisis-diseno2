@@ -280,11 +280,11 @@ public class Informe extends javax.swing.JInternalFrame {
         jTextField3.setText("0");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("U.V.");
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Generar informes");
 
         jTextField4.setEditable(false);
@@ -292,12 +292,12 @@ public class Informe extends javax.swing.JInternalFrame {
         jTextField4.setText("5");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Código: ");
 
         Boton1.setBackground(new java.awt.Color(255, 255, 255));
         Boton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        Boton1.setForeground(new java.awt.Color(81, 152, 224));
+        Boton1.setForeground(new java.awt.Color(65, 105, 225));
         Boton1.setText("Generar Reporte");
         Boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,20 +306,20 @@ public class Informe extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Clase");
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("(Semana del)");
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel4.setForeground(new java.awt.Color(65, 105, 225));
         jLabel4.setText("Asignatura:");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(81, 152, 224));
+        jButton1.setForeground(new java.awt.Color(65, 105, 225));
         jButton1.setText("Enviar a mi Correo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,7 +341,7 @@ public class Informe extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setText("Clases no impartidas");
 
         jTable1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N

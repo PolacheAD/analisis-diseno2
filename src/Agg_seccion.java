@@ -296,51 +296,51 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Asignatura");
 
         jTextField2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
         b3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b3.setForeground(new java.awt.Color(81, 152, 224));
+        b3.setForeground(new java.awt.Color(65, 105, 225));
         b3.setText("Mi");
 
         jTextField3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel4.setForeground(new java.awt.Color(65, 105, 225));
         jLabel4.setText("Hora inicial");
 
         jLabel10.setForeground(new java.awt.Color(81, 152, 224));
         jLabel10.setText("/");
 
         b4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b4.setForeground(new java.awt.Color(81, 152, 224));
+        b4.setForeground(new java.awt.Color(65, 105, 225));
         b4.setText("Ju");
 
         jLabel11.setForeground(new java.awt.Color(81, 152, 224));
         jLabel11.setText("/");
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setText("Hora final");
 
         jLabel12.setForeground(new java.awt.Color(81, 152, 224));
         jLabel12.setText("/");
 
         b5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b5.setForeground(new java.awt.Color(81, 152, 224));
+        b5.setForeground(new java.awt.Color(65, 105, 225));
         b5.setText("Vi");
 
         jLabel13.setForeground(new java.awt.Color(81, 152, 224));
         jLabel13.setText("/");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Lista de estudiantes");
 
         b6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b6.setForeground(new java.awt.Color(81, 152, 224));
+        b6.setForeground(new java.awt.Color(65, 105, 225));
         b6.setText("Sá");
         b6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,14 +353,14 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jTextField5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("Días de clase");
 
         jTextField6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(81, 152, 224));
+        jButton2.setForeground(new java.awt.Color(65, 105, 225));
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,12 +369,12 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         });
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel14.setForeground(new java.awt.Color(65, 105, 225));
         jLabel14.setText("U.V.");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(81, 152, 224));
+        jButton1.setForeground(new java.awt.Color(65, 105, 225));
         jButton1.setText("Cargar lista...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,11 +402,11 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Crear Clase");
 
         b1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b1.setForeground(new java.awt.Color(81, 152, 224));
+        b1.setForeground(new java.awt.Color(65, 105, 225));
         b1.setText("Lu");
         b1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,19 +447,19 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setText("Fecha inicio (dd/mm/aa)");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Departamento");
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel9.setForeground(new java.awt.Color(65, 105, 225));
         jLabel9.setText("Fecha final (dd/mm/aa)");
 
         b2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        b2.setForeground(new java.awt.Color(81, 152, 224));
+        b2.setForeground(new java.awt.Color(65, 105, 225));
         b2.setText("Ma");
 
         jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N

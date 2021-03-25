@@ -184,7 +184,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="747" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -197,9 +197,9 @@
               <Font name="Leelawadee UI Semilight" size="36" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d3" green="7e" red="2a" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sistema de Registro de Asistencia IS UNAH-VS"/>
+            <Property name="text" type="java.lang.String" value="Sistema de registro de asistencia IS UNAH-VS"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel1">
@@ -327,7 +327,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&lt;- Volver al men&#xfa; principal"/>
               </Properties>
@@ -344,7 +344,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Listado/Resumen Diario de asistencia de la clase "/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
@@ -362,7 +362,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Listado de clases del per&#xed;odo"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
@@ -380,7 +380,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Listado semanal de asistencia de la clase"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
@@ -398,7 +398,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Estudiantes con inasistencia mayor al 25%"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
@@ -416,7 +416,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Resumen de asistencia del per&#xed;odo por estudiante"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
@@ -434,7 +434,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Resumen de asistencia del parcial por estudiante"/>
               </Properties>
@@ -451,7 +451,7 @@
                   <Font name="Leelawadee UI Semilight" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d3" green="7e" red="2a" type="rgb"/>
+                  <Color blue="e1" green="69" red="41" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Confirmacion de asistencia"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>

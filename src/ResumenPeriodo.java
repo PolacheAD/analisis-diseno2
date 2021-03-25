@@ -173,7 +173,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Seleccione la clase de la cual desea obtener un resumen:");
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -181,7 +181,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(81, 152, 224));
+        jButton1.setForeground(new java.awt.Color(65, 105, 225));
         jButton1.setText("Generar resumen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,7 +190,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Resumen de asistencia del período por estudiante");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

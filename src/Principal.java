@@ -119,8 +119,8 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.setRequestFocusEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(42, 126, 211));
-        jLabel7.setText("Sistema de Registro de Asistencia IS UNAH-VS");
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
+        jLabel7.setText("Sistema de registro de asistencia IS UNAH-VS");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -151,7 +151,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setText("Área de reportes");
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(42, 126, 211));
+        jLabel9.setForeground(new java.awt.Color(65, 105, 225));
         jLabel9.setText("<- Volver al menú principal");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -161,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(42, 126, 211));
+        jButton1.setForeground(new java.awt.Color(65, 105, 225));
         jButton1.setText("Listado/Resumen Diario de asistencia de la clase ");
         jButton1.setAutoscrolls(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(42, 126, 211));
+        jButton2.setForeground(new java.awt.Color(65, 105, 225));
         jButton2.setText("Listado de clases del período");
         jButton2.setAutoscrolls(true);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +183,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(42, 126, 211));
+        jButton3.setForeground(new java.awt.Color(65, 105, 225));
         jButton3.setText("Listado semanal de asistencia de la clase");
         jButton3.setAutoscrolls(true);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(42, 126, 211));
+        jButton4.setForeground(new java.awt.Color(65, 105, 225));
         jButton4.setText("Estudiantes con inasistencia mayor al 25%");
         jButton4.setAutoscrolls(true);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +205,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(42, 126, 211));
+        jButton5.setForeground(new java.awt.Color(65, 105, 225));
         jButton5.setText("Resumen de asistencia del período por estudiante");
         jButton5.setAutoscrolls(true);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(42, 126, 211));
+        jButton6.setForeground(new java.awt.Color(65, 105, 225));
         jButton6.setText("Resumen de asistencia del parcial por estudiante");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +226,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(42, 126, 211));
+        jButton7.setForeground(new java.awt.Color(65, 105, 225));
         jButton7.setText("Confirmacion de asistencia");
         jButton7.setAutoscrolls(true);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -386,7 +386,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                     .addGap(0, 33, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 35, 102));

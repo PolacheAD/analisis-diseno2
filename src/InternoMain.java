@@ -176,11 +176,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Inicio de clases");
 
         jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel19.setForeground(new java.awt.Color(65, 105, 225));
         jLabel19.setText("Fecha final");
 
         jTextField2.setEditable(false);
@@ -190,28 +190,28 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jTextField12.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setText("Asignatura: ");
 
         jLabel20.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel20.setForeground(new java.awt.Color(65, 105, 225));
         jLabel20.setText("(aaaa-mm-dd)");
 
         jLabel21.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel21.setForeground(new java.awt.Color(65, 105, 225));
         jLabel21.setText("(aaaa-mm-dd)");
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel10.setForeground(new java.awt.Color(65, 105, 225));
         jLabel10.setText("Información de la clase");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Sección: ");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(81, 152, 224));
+        jButton3.setForeground(new java.awt.Color(65, 105, 225));
         jButton3.setText("Cerrar sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,11 +235,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         });
 
         jLabel15.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel15.setForeground(new java.awt.Color(65, 105, 225));
         jLabel15.setText("Mis clases");
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("Hora inicial");
 
         jTextField4.setEditable(false);
@@ -251,19 +251,19 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         });
 
         jLabel16.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel16.setForeground(new java.awt.Color(65, 105, 225));
         jLabel16.setText("Hora final");
 
         jLabel12.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel12.setForeground(new java.awt.Color(65, 105, 225));
         jLabel12.setText("Información del catedrático");
 
         jLabel17.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel17.setForeground(new java.awt.Color(65, 105, 225));
         jLabel17.setText("Días");
 
         jLabel13.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel13.setForeground(new java.awt.Color(65, 105, 225));
         jLabel13.setText("Departamento:");
 
         jTextField5.setEditable(false);
@@ -279,11 +279,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jTextField10.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel9.setForeground(new java.awt.Color(65, 105, 225));
         jLabel9.setText("Catedrático: ");
 
         jLabel18.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel18.setForeground(new java.awt.Color(65, 105, 225));
         jLabel18.setText("U.V.");
 
         jTextField7.setEditable(false);
@@ -293,7 +293,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jTextField11.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Estudiante: ");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -309,7 +309,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(81, 152, 224));
+        jButton5.setForeground(new java.awt.Color(65, 105, 225));
         jButton5.setText("Iniciar clase");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,11 +318,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         });
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setText("Inasistencias: ");
 
         jLabel11.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel11.setForeground(new java.awt.Color(65, 105, 225));
         jLabel11.setText("Información del estudiante");
 
         jTextField6.setEditable(false);
@@ -330,7 +330,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(81, 152, 224));
+        jButton4.setForeground(new java.awt.Color(65, 105, 225));
         jButton4.setText("Finalizar Clase");
         jButton4.setToolTipText("");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -340,7 +340,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         });
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Esperando Código QR...");
 
         jTextField1.setEditable(false);
@@ -533,8 +533,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                                 .addGap(32, 32, 32)
                                 .addComponent(jLabel4)
                                 .addGap(28, 28, 28)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))

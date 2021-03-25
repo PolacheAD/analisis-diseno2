@@ -61,11 +61,11 @@ public class registro extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Regístrate");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
         jLabel2.setText("Nombre");
 
         nombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
@@ -76,7 +76,7 @@ public class registro extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel4.setForeground(new java.awt.Color(65, 105, 225));
         jLabel4.setText("Apellido");
 
         apellido.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
@@ -87,7 +87,7 @@ public class registro extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setForeground(new java.awt.Color(65, 105, 225));
         jLabel5.setText("Correo Electrónico");
 
         correo.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
@@ -98,7 +98,7 @@ public class registro extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Nombre de Usuario");
 
         usuario.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
@@ -109,16 +109,16 @@ public class registro extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel7.setForeground(new java.awt.Color(65, 105, 225));
         jLabel7.setText("Contraseña");
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setText("Ingresa Nuevamente la contraseña");
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(81, 152, 224));
+        jButton2.setForeground(new java.awt.Color(65, 105, 225));
         jButton2.setText("Guardar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
