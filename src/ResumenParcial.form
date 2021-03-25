@@ -148,7 +148,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Seleccione el rango de fechas del parcial:"/>
           </Properties>
@@ -159,7 +159,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Desde:"/>
           </Properties>
@@ -180,7 +180,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="(A&#xf1;o-Mes-Dia)"/>
           </Properties>
@@ -191,7 +191,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Hasta:"/>
           </Properties>
@@ -209,7 +209,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="(A&#xf1;o-Mes-Dia)"/>
           </Properties>
@@ -223,7 +223,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Generar resumen"/>
           </Properties>
@@ -252,7 +252,7 @@
               <Font name="Leelawadee UI Semilight" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Clase:"/>
           </Properties>
@@ -263,7 +263,7 @@
               <Font name="Leelawadee UI Semilight" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e0" green="98" red="51" type="rgb"/>
+              <Color blue="e1" green="69" red="41" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Resumen de asistencia del parcial por estudiante"/>
           </Properties>
