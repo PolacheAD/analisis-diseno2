@@ -176,6 +176,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(81, 152, 224));
         jLabel1.setText("Seleccione la clase de la cual desea obtener un resumen:");
 
+        jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instalaciones Electricas" }));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -222,7 +223,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(35, 35, 35)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(37, 37, 37))
         );
