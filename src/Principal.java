@@ -147,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(42, 126, 211));
+        jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setText("Área de reportes");
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
