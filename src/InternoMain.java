@@ -171,17 +171,17 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Iniciar Clase");
+        setTitle("Iniciar clase");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel3.setText("Inicio de Clases");
+        jLabel3.setText("Inicio de clases");
 
         jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel19.setText("Fecha Final");
+        jLabel19.setText("Fecha final");
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -203,7 +203,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel10.setText("Información de la Clase");
+        jLabel10.setText("Información de la clase");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(81, 152, 224));
@@ -212,7 +212,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(81, 152, 224));
-        jButton3.setText("Cerrar Sesión");
+        jButton3.setText("Cerrar sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -236,11 +236,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jLabel15.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel15.setText("Mis Clases");
+        jLabel15.setText("Mis clases");
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel7.setText("Hora Inicial");
+        jLabel7.setText("Hora inicial");
 
         jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -252,11 +252,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jLabel16.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel16.setText("Hora Final");
+        jLabel16.setText("Hora final");
 
-        jLabel12.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel12.setText("Información del Catedrático");
+        jLabel12.setText("Información del catedrático");
 
         jLabel17.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(81, 152, 224));
@@ -264,7 +264,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jLabel13.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel13.setText("Depto:");
+        jLabel13.setText("Departamento:");
 
         jTextField5.setEditable(false);
         jTextField5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -310,7 +310,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(81, 152, 224));
-        jButton5.setText("Iniciar Clase");
+        jButton5.setText("Iniciar clase");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -323,7 +323,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
 
         jLabel11.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel11.setText("Información del Estudiante");
+        jLabel11.setText("Información del estudiante");
 
         jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -332,6 +332,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(81, 152, 224));
         jButton4.setText("Finalizar Clase");
+        jButton4.setToolTipText("");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -446,13 +447,13 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addGap(62, 62, 62)
-                                .addComponent(jButton4)
-                                .addGap(484, 484, 484))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(134, 134, 134))))))
+                                .addGap(134, 134, 134))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addGap(46, 46, 46)
+                                .addComponent(jButton4)
+                                .addGap(355, 355, 355))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,11 +534,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                                 .addComponent(jLabel4)
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
 

@@ -4,7 +4,7 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="defaultCloseOperation" type="int" value="1"/>
-    <Property name="title" type="java.lang.String" value="Iniciar Clase"/>
+    <Property name="title" type="java.lang.String" value="Iniciar clase"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -169,14 +169,14 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="484" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jComboBox1" min="-2" pref="244" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="355" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -278,7 +278,7 @@
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
@@ -286,7 +286,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="jPanel1" pref="224" max="32767" attributes="0"/>
+                      <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
@@ -302,7 +302,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Inicio de Clases"/>
+            <Property name="text" type="java.lang.String" value="Inicio de clases"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
@@ -313,7 +313,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Fecha Final"/>
+            <Property name="text" type="java.lang.String" value="Fecha final"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
@@ -373,7 +373,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de la Clase"/>
+            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de la clase"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -398,7 +398,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -439,7 +439,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Mis Clases"/>
+            <Property name="text" type="java.lang.String" value="Mis clases"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -450,7 +450,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hora Inicial"/>
+            <Property name="text" type="java.lang.String" value="Hora inicial"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
@@ -472,18 +472,18 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hora Final"/>
+            <Property name="text" type="java.lang.String" value="Hora final"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Leelawadee UI Semilight" size="18" style="1"/>
+              <Font name="Leelawadee UI Semilight" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del Catedr&#xe1;tico"/>
+            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del catedr&#xe1;tico"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -505,7 +505,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Depto:"/>
+            <Property name="text" type="java.lang.String" value="Departamento:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField5">
@@ -652,7 +652,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Iniciar Clase"/>
+            <Property name="text" type="java.lang.String" value="Iniciar clase"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
@@ -677,7 +677,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del Estudiante"/>
+            <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del estudiante"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField6">
@@ -700,6 +700,7 @@
               <Color blue="e0" green="98" red="51" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Finalizar Clase"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

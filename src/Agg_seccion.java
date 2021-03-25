@@ -291,7 +291,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Crear Clase");
+        setTitle("Crear clase");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -309,39 +309,44 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel4.setText("Hora Inicial");
+        jLabel4.setText("Hora inicial");
 
         jLabel10.setForeground(new java.awt.Color(81, 152, 224));
         jLabel10.setText("/");
 
         b4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         b4.setForeground(new java.awt.Color(81, 152, 224));
-        b4.setText("J");
+        b4.setText("Ju");
 
         jLabel11.setForeground(new java.awt.Color(81, 152, 224));
         jLabel11.setText("/");
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel5.setText("Hora Final");
+        jLabel5.setText("Hora final");
 
         jLabel12.setForeground(new java.awt.Color(81, 152, 224));
         jLabel12.setText("/");
 
         b5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         b5.setForeground(new java.awt.Color(81, 152, 224));
-        b5.setText("V");
+        b5.setText("Vi");
 
         jLabel13.setForeground(new java.awt.Color(81, 152, 224));
         jLabel13.setText("/");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel6.setText("Lista de Estudiantes");
+        jLabel6.setText("Lista de estudiantes");
 
         b6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         b6.setForeground(new java.awt.Color(81, 152, 224));
-        b6.setText("S");
+        b6.setText("Sá");
+        b6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b6ActionPerformed(evt);
+            }
+        });
 
         jTextField4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
@@ -349,7 +354,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel7.setText("Días de Clase");
+        jLabel7.setText("Días de clase");
 
         jTextField6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
 
@@ -370,7 +375,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(81, 152, 224));
-        jButton1.setText("Cargar Lista...");
+        jButton1.setText("Cargar lista...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -402,7 +407,12 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         b1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         b1.setForeground(new java.awt.Color(81, 152, 224));
-        b1.setText("L");
+        b1.setText("Lu");
+        b1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b1ActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
@@ -416,7 +426,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "N° Cuenta", "Estudiante", "Correo Personal"
+                "No. Cuenta", "Estudiante", "Correo personal"
             }
         ) {
             Class[] types = new Class [] {
@@ -438,7 +448,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel8.setText("Fecha Inicio (dd/mm/aa)");
+        jLabel8.setText("Fecha inicio (dd/mm/aa)");
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(81, 152, 224));
@@ -446,7 +456,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel9.setText("Fecha Final (dd/mm/aa)");
+        jLabel9.setText("Fecha final (dd/mm/aa)");
 
         b2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         b2.setForeground(new java.awt.Color(81, 152, 224));
@@ -483,7 +493,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                                                 .addComponent(jLabel7)
                                                 .addGap(42, 42, 42))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(0, 77, Short.MAX_VALUE)
+                                                .addGap(0, 326, Short.MAX_VALUE)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -538,10 +548,10 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                                 .addGap(40, 40, 40))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(351, 351, 351)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(513, 513, 513))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,15 +610,15 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel12)
                                 .addComponent(jLabel13))
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(39, 39, 39)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -738,6 +748,14 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b1ActionPerformed
+
+    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -183,8 +183,8 @@
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                      <Component id="jPanel3" min="-2" pref="747" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -254,41 +254,43 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton1" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton5" pref="424" max="32767" attributes="0"/>
-                                      <Component id="jButton4" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="jButton1" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
+                              <Component id="jButton2" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
+                              <Component id="jButton3" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
+                              <Component id="jButton7" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
+                              <Component id="jButton6" alignment="1" min="-2" pref="424" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButton5" pref="424" max="32767" attributes="0"/>
+                                          <Component id="jButton4" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="242" max="32767" attributes="0"/>
+                      <EmptySpace pref="224" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -298,7 +300,7 @@
                       <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" max="-2" attributes="0"/>
@@ -313,12 +315,12 @@
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Leelawadee UI Semilight" size="24" style="0"/>
+                  <Font name="Leelawadee UI Semilight" size="36" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xc1;rea de Reportes"/>
+                <Property name="text" type="java.lang.String" value="&#xc1;rea de reportes"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
@@ -329,7 +331,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;- Volver al Men&#xfa; Principal"/>
+                <Property name="text" type="java.lang.String" value="&lt;- Volver al men&#xfa; principal"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel9MouseClicked"/>
@@ -346,7 +348,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listado/Resumen Diario de Asistencia de la Clase "/>
+                <Property name="text" type="java.lang.String" value="Listado/Resumen Diario de asistencia de la clase "/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -364,7 +366,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listado de Clases del Per&#xed;odo"/>
+                <Property name="text" type="java.lang.String" value="Listado de clases del per&#xed;odo"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -382,7 +384,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Listado Semanal de Asistencia de la Clase"/>
+                <Property name="text" type="java.lang.String" value="Listado semanal de asistencia de la clase"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -400,7 +402,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Estudiantes con Inasistencia Mayor al 25%"/>
+                <Property name="text" type="java.lang.String" value="Estudiantes con inasistencia mayor al 25%"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -418,7 +420,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Resumen de Asistencia del Per&#xed;odo por Estudiante"/>
+                <Property name="text" type="java.lang.String" value="Resumen de asistencia del per&#xed;odo por estudiante"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -436,7 +438,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Resumen de Asistencia Parcial por Estudiante"/>
+                <Property name="text" type="java.lang.String" value="Resumen de asistencia del parcial por estudiante"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -453,7 +455,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d3" green="7e" red="2a" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Confirmacion de Asistencia"/>
+                <Property name="text" type="java.lang.String" value="Confirmacion de asistencia"/>
                 <Property name="autoscrolls" type="boolean" value="true"/>
               </Properties>
               <Events>
@@ -500,7 +502,7 @@
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                      <EmptySpace pref="113" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
