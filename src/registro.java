@@ -45,8 +45,6 @@ public class registro extends javax.swing.JFrame {
         apellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         correo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        usuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -94,17 +92,6 @@ public class registro extends javax.swing.JFrame {
         correo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 correoMouseEntered(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel6.setText("Nombre de Usuario");
-
-        usuario.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        usuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                usuarioMouseEntered(evt);
             }
         });
 
@@ -181,8 +168,6 @@ public class registro extends javax.swing.JFrame {
                                         .addComponent(apellido)))
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(correo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usuario, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8)
                                 .addComponent(contra_nuevamente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -209,11 +194,7 @@ public class registro extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +206,7 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contra_nuevamente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -266,26 +247,19 @@ public class registro extends javax.swing.JFrame {
         diseno2++;
     }//GEN-LAST:event_apellidoMouseEntered
 
-    private void usuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMouseEntered
-        if(diseno4==0){
-        usuario.setText("");}
-         diseno4++;
-    }//GEN-LAST:event_usuarioMouseEntered
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
      con.conectar();
       String contrase=String.valueOf(this.contra.getPassword());
       String contrase_repetir=String.valueOf(contra_nuevamente.getPassword());
      nombrefull=nombre.getText().trim()+" "+apellido.getText().trim();
      
-       existe = "select * from catedratico where usuario = \"" +usuario.getText()+"\"";
+       existe = "select * from Catedratico where Correo = \"" +correo.getText()+"\"";
       
-       accion ="insert into catedratico (nombre_cated,usuario,pass,correo) values("
+       accion ="insert into Catedratico (Nombre,Correo,Password) values("
                     + "'"+nombrefull+"',"
-                    + "'"+usuario.getText()+"',"
-                    + "'"+contrase+"',"
-                    + "'"+correo.getText()+"')";
+                    + "'"+correo.getText()+"',"
+                    + "'"+contrase+"')";
+                    
        
        
        
@@ -293,14 +267,14 @@ public class registro extends javax.swing.JFrame {
         
         try {
             
-            aux=ret.getString("usuario");
+            aux=ret.getString("Correo");
             
             if (aux==null) {
               
                 
             
             }
-                else{usuario.setText("USUARIO YA EXISTE");
+                else{correo.setText("CORREO YA EXISTE");
             diseno4=0;
             }
             
@@ -320,14 +294,13 @@ public class registro extends javax.swing.JFrame {
                
                  if(contrase.equals(contrase_repetir)){
                  
-                    if(nickname(usuario.getText())){usuario.setText("INGRESE NUEVAMENTE USUARIO");} 
+                    if(nickname(correo.getText())){correo.setText("INGRESE NUEVAMENTE CORREO");} 
                     else{
                    con.insertar(accion);
                    con.cerrar();
                    JOptionPane.showMessageDialog(null,"SE HA REGISTRADO SACTIFACTORIAMENTE ");
                    nombre.setText("");
                    apellido.setText("");
-                   usuario.setText("");
                    contra.setText("");
                    contra_nuevamente.setText("");
                     }
@@ -475,11 +448,9 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

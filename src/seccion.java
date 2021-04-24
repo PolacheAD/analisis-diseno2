@@ -1,3 +1,6 @@
+
+import java.time.LocalDate;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,8 +12,9 @@
  * @author Arnold
  */
 public class seccion {
-    private String numseccion, fecha_i, fecha_f, id_asig, dias;
-    private int id_catedratico, faltas_cated , hi, hf, semana;
+    private LocalDate fecha_i, fecha_f;
+    private String numseccion, id_asig, dias;
+    private int id_catedratico, faltas_cated , hi, hf;
 
     public int getFaltas_cated() {
         return faltas_cated;
@@ -19,27 +23,19 @@ public class seccion {
     public void setFaltas_cated(int faltas_cated) {
         this.faltas_cated = faltas_cated;
     }
-    public String getFecha_i() {
+    public LocalDate getFecha_i() {
         return fecha_i;
     }
 
-    public int getSemana() {
-        return semana;
-    }
-
-    public void setSemana(int semana) {
-        this.semana = semana;
-    }
-
-    public void setFecha_i(String fecha_i) {
+    public void setFecha_i(LocalDate fecha_i) {
         this.fecha_i = fecha_i;
     }
 
-    public String getFecha_f() {
+    public LocalDate getFecha_f() {
         return fecha_f;
     }
 
-    public void setFecha_f(String fecha_f) {
+    public void setFecha_f(LocalDate fecha_f) {
         this.fecha_f = fecha_f;
     }
     public String getNumseccion() {

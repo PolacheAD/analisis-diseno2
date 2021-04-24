@@ -38,7 +38,7 @@ public class cambiar extends javax.swing.JInternalFrame {
        libreria_sql.Libreria_sql con;
       ImageIcon imagen =new ImageIcon("/imagen/fondo_blanco.jpg");
       String contra,contra2;
-     String tabla="catedratico",update,accion,accion2;
+     String tabla="Catedratico",update,accion,accion2;
      String texto1,texto2,texto3;
     ResultSet ret,ret2;
     int diseno1=0,diseno2=0,diseno3=0;
@@ -100,7 +100,7 @@ public class cambiar extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(81, 152, 224));
-        jLabel9.setText("-Tu contraseña debe contener almenos un número.");
+        jLabel9.setText("-Tu contraseña debe contener al menos un número.");
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(81, 152, 224));
@@ -274,21 +274,17 @@ public class cambiar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      con.conectar();
-       texto1=String.valueOf(contra_actual.getPassword());
+        con.conectar();
+        texto1=String.valueOf(contra_actual.getPassword());
       
       
-       accion = "select * from catedratico where usuario = \"" +usuario.getUsuario()+"\"";
-         accion2 = "select * from catedratico where pass = \"" +texto1+"\"";
-        ret = con.seleccionar(accion);
-        ret2=con.seleccionar(accion2);
+        accion = "select * from Catedratico where Correo = \"" +usuario.getCorreo()+"\"";
         try {
-            //contra=ret.getString("pass");
-            contra=ret2.getString("pass");
-            contra2=ret.getString("pass");
-            if(contra.equals(contra2)){
-            
-            if (contra!=null) {
+            ret = con.seleccionar(accion);
+            contra=ret.getString("Correo");
+            contra2=ret.getString("Password");
+            if(contra2.equals(texto1)){
+                if (contra!=null) {
               
                 String nueva=String.valueOf(contra_nueva.getPassword());
               
@@ -307,7 +303,7 @@ public class cambiar extends javax.swing.JInternalFrame {
                 
                  if(nueva_contrasena.equals(contrasena_comparar)){
                     
-                 update="update catedratico set pass = '"+nueva_contrasena+"' where usuario = '"+usuario.getUsuario()+"'"; 
+                 update="update Catedratico set Password = '"+nueva_contrasena+"' where Correo = '"+usuario.getCorreo()+"'"; 
                  con.insertar(update);
                  JOptionPane.showMessageDialog(null,"Contraseña actualizada con éxito.");
                  contra_actual.setText("");
@@ -319,12 +315,8 @@ public class cambiar extends javax.swing.JInternalFrame {
                     contra_repetir.setText("INGRESE NUEVAMENTE");
                  
                     diseno3=0;
-                 }
-                  
-                    
-                
                 }
-            
+                }
             }
             }
                 else{
@@ -335,7 +327,7 @@ public class cambiar extends javax.swing.JInternalFrame {
             
            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error");
+           JOptionPane.showMessageDialog(null, e.getMessage());
            contra_actual.setText("INGRESE NUEVAMENTE");
            diseno1=0;
             

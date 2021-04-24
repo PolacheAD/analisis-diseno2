@@ -9,23 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import asistenteCorreo.AsistenteCorreo;
-import java.util.GregorianCalendar;
-import java.util.Calendar;
-import java.time.format.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,70 +34,93 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Arnold
  */
-
-public class Agg_seccion extends javax.swing.JInternalFrame {
+public class AgregarSecc extends javax.swing.JInternalFrame {
     libreria_sql.Libreria_sql con;
-    ResultSet regreso;
-    catedratico sesion;
-    seccion temporal_s;
-    InternoMain asistencia;
-    String temporal_string, temporal_string2, temporal_string3;
-    String hoja;
-    int temporal_int,temporal_int2, hi,hf;
-    depto temporal_depto;
-    ArrayList<javax.swing.JCheckBox> botones;
     JFileChooser file;
-    FileNameExtensionFilter filtro;
+    LocalDate localDate, inicio, fin;
+    ResultSet regreso;
+    String hoja;
+    String temp_correo, temp_cuenta;
+    catedratico sesion;
     Iterator<Row> rowIterator;
     Iterator<Cell> cellIterator;
+    ArrayList<String> cuentas;
     Row row;
     Cell cell;
+    String temporal_string, temporal_string2;
+    int temporal_int, temporal_int2, hi, hf;
+    boolean estud, horas;
     DefaultTableModel model;
-    Calendar Cl = new GregorianCalendar();
-    LocalDate localDate;
-    LocalDate inicio,fin;
-    
+    seccion temporal_s;
+    ArrayList<javax.swing.JCheckBox> botones;
     DateTimeFormatter formato;
-    boolean horas;
-    boolean estud;
+    FileNameExtensionFilter filtro;
     asistenteCorreo.AsistenteCorreo enviar;
-    
     /**
-     * Creates new form Agg_seccion
-     * @param sesion
-     * @param asistencia
+     * Creates new form AgregarSecc
      */
-    public Agg_seccion(catedratico sesion, InternoMain asistencia) {
+    public AgregarSecc(catedratico sesion) {
         initComponents();
+        enviar = new asistenteCorreo.AsistenteCorreo();
         model = (DefaultTableModel)jTable1.getModel();
+        con = new libreria_sql.Libreria_sql();
+        filtro = new FileNameExtensionFilter("Hoja de Cálculo de Excel 2007 (.xlsx)", "xlsx");
         this.sesion = sesion;
         temporal_s = new seccion();
-        this.asistencia = asistencia;
-        this.con = new libreria_sql.Libreria_sql();
         botones = new ArrayList();
+        formato= DateTimeFormatter.ofPattern("dd/MM/uuuu")
+                .withResolverStyle(ResolverStyle.STRICT);
+        localDate = LocalDate.now();
         botones.add(b1);
         botones.add(b2);
         botones.add(b3);
         botones.add(b4);
         botones.add(b5);
         botones.add(b6);
-        Cl.setMinimalDaysInFirstWeek(1);
-        localDate = LocalDate.now();
-        formato= DateTimeFormatter.ofPattern("dd/MM/uuuu")
-                .withResolverStyle(ResolverStyle.STRICT);
-        temporal_string = new String();
-        estud=false;
-        jButton2.setEnabled(false);
-        filtro = new FileNameExtensionFilter("Hoja de Cálculo de Excel 2007 (.xlsx)", "xlsx");
-        enviar = new asistenteCorreo.AsistenteCorreo();
     }
-    public void llenar_combos(){
-        jComboBox1.removeAllItems();
-        jComboBox2.removeAllItems();
-        jComboBox1.addItem("Elija un Departamento...");
-        jComboBox2.addItem("Elija una Asignatura...");
-        for (depto dpt : asistencia.deptos) {
-            this.jComboBox1.addItem(dpt.getNombre_depto());
+    public String regresar_seccion(String asig_id, String hi){
+        try {
+            con.conectar();
+            int Mayor=0, cont=0;
+            temporal_string2 = "SELECT SeccionID FROM InfoSeccion WHERE "
+                    + "AsignaturaID = '"+asig_id+"' and SeccionID like '%"+hi+"%';";
+            regreso = con.seleccionar(temporal_string2);
+            while(regreso.next()){
+                temporal_int = Integer.parseInt(regreso.getString(1).substring(2,4));
+                if(temporal_int > Mayor){
+                    Mayor=temporal_int;
+                }
+                cont++;
+            }
+            if(cont>0){
+                return hi+"0"+(Mayor+1);
+            }
+            else{
+                return hi+"00";
+            }
+            } catch (SQLException ex) {
+            Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+        finally{
+            con.cerrar();
+        }
+    }
+    public void llenar_asigns(){
+        try {
+            con.conectar();
+            temporal_string2 = "select AsignaturaID, Nombre from Asignatura";
+            regreso = con.seleccionar(temporal_string2);
+            while(regreso.next()){
+                jComboBox2.addItem(regreso.getString("AsignaturaID")+" - "
+                +regreso.getString("Nombre"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error en llenar_asigns");
+        } finally{
+            con.cerrar();
         }
     }
     public void llenar_dias(){
@@ -114,41 +135,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         if(temporal_string.isEmpty() == false){
             temporal_s.setDias(temporal_string.substring(0, temporal_string.length()-1));
         }   
-    }
-    public boolean comprobarUv(int uv){
-        int horatotal = hf-hi;
-        if(temporal_int2*horatotal == uv){
-            return true;
-        }
-        return false;
-    }
-    public String regresar_sección(String secc, String hi){
-        try {
-            con.conectar();
-            int Mayor=0, cont=0;
-            temporal_string2 = "SELECT name FROM sqlite_master WHERE "
-                    + "type = \"table\" and name like '%"+secc+"-"+hi+"%';";
-            regreso = con.seleccionar(temporal_string2);
-            while(regreso.next()){
-                temporal_int = Integer.parseInt(regreso.getString(1).substring(8, 10));
-                if(temporal_int > Mayor){
-                    Mayor=temporal_int;
-                }
-                cont++;
-            }
-            if(cont>0){
-                return hi+"0"+(Mayor+1);
-            }
-            else{
-                return hi+"00";
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Agg_seccion.class.getName()).log(Level.SEVERE, null, ex);
-            return "";
-        }
-        finally{
-            con.cerrar();
-        }
     }
     public void leer_estud(File abrir){
         hoja = "Hoja1";
@@ -174,55 +160,65 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
             estud=true;
             jButton2.setEnabled(true);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Agg_seccion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Agg_seccion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void crear_tablaSec(String secc){
-        try {
-            con.conectar();
-            temporal_string2 = "CREATE TABLE ["+secc+"] (\n" +
-"    cuenta        VARCHAR (11) PRIMARY KEY,\n" +
-"    nombre_alumno VARCHAR (80),\n" +
-"    correo        VARCHAR (50),\n" +
-"    L             VARCHAR (1) DEFAULT ('-'),\n" +
-"    Ma            VARCHAR (1) DEFAULT ('-'),\n" +
-"    Mi            VARCHAR (1) DEFAULT ('-'),\n" +
-"    J             VARCHAR (1) DEFAULT ('-'),\n" +
-"    V             VARCHAR (1) DEFAULT ('-'),\n" +
-"    S             VARCHAR (1) DEFAULT ('-'),\n" +
-"    faltas        INTEGER DEFAULT (0)\n" +
-");";
-            con.insertar(temporal_string2);
-        } 
-        finally{
-            con.cerrar();
-        }
-    }
-    public void llenar_tablaSec(String secc){
+    
+    public void agregar_seccion(seccion secc){
         con.conectar();
-        for(int i=0; i<model.getRowCount(); i++){
-            temporal_string2 = "insert into ["+secc+"] (cuenta, nombre_alumno, correo) values("
-                    + "'"+model.getValueAt(i, 0)+"',"
-                    + "'"+model.getValueAt(i, 1)+"',"
-                    + "'"+model.getValueAt(i, 2)+"')";
-            con.insertar(temporal_string2);
-        }
-        temporal_string2 = "insert into seccion (seccion,id_asig,id_catedratico,hi,hf,fecha_inicio,fecha_fin,dias) "
-                + "values('"+temporal_s.getNumseccion()+"',"
-                + "'"+temporal_s.getId_asig()+"',"
-                + temporal_s.getId_catedratico()+","
-                + temporal_s.getHi() +","
-                + temporal_s.getHf() +","
-                + "'"+temporal_s.getFecha_i()+"',"
-                + "'"+temporal_s.getFecha_f()+"',"
-                + "'"+temporal_s.getDias()+"')"; 
+        temporal_string2 = "insert into InfoSeccion values ('"
+                +temporal_s.getNumseccion()+"', '"
+                +temporal_s.getId_asig()+"', '"
+                +temporal_s.getId_catedratico()+"', '"
+                +temporal_s.getHi()+"', '"
+                +temporal_s.getHf()+"', '"
+                +temporal_s.getFecha_i()+"', '"
+                +temporal_s.getFecha_f()+"', '"
+                +temporal_s.getDias()+"', "
+                +0+")";
+        
         con.insertar(temporal_string2);
         con.cerrar();
     }
+    
+    public void llenar_seccion(){
+        try {
+            con.conectar();
+            cuentas = new ArrayList();
+            temporal_string2 = "select NumeroCuenta from Alumno";
+            regreso = con.seleccionar(temporal_string2);
+            while(regreso.next()){
+                cuentas.add(regreso.getString("NumeroCuenta"));
+            }
+            
+            for(int i=0; i<model.getRowCount(); i++){
+                if(cuentas.contains(String.valueOf(model.getValueAt(i, 0))) == false){
+                    temporal_string2 = "insert into Alumno (NumeroCuenta, Nombre, Correo) values("
+                        + "'"+model.getValueAt(i, 0)+"',"
+                        + "'"+model.getValueAt(i, 1)+"',"
+                        + "'"+model.getValueAt(i, 2)+"')";
+                    con.insertar(temporal_string2);
+                }
+            }
+            for(int i=0; i<model.getRowCount(); i++){
+                temporal_string2 = "insert into seccion values ("
+                    + "'"+temporal_s.getNumseccion()+"',"
+                    + "'"+temporal_s.getId_asig()+"',"
+                    + "'"+model.getValueAt(i,0) + "')";
+                con.insertar(temporal_string2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    
     public void correos(){
-        String temp_correo, temp_cuenta;
+        
         for(int i=0; i<model.getRowCount(); i++){
             temp_cuenta = String.valueOf(model.getValueAt(i, 0));
             temp_correo = String.valueOf(model.getValueAt(i, 2));
@@ -231,7 +227,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         }
     }
     public void borrar_ing(){
-        jComboBox1.setSelectedIndex(0);
         jComboBox2.setSelectedIndex(0);
         jComboBox3.setSelectedIndex(0);
         jComboBox4.setSelectedIndex(0);
@@ -272,10 +267,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         b1 = new javax.swing.JCheckBox();
@@ -284,14 +276,11 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         b2 = new javax.swing.JCheckBox();
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Crear clase");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -368,10 +357,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel14.setText("U.V.");
-
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(65, 105, 225));
@@ -379,17 +364,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jTextField7.setEditable(false);
-        jTextField7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-
-        jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija un Departamento..." }));
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
             }
         });
 
@@ -450,10 +424,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(65, 105, 225));
         jLabel8.setText("Fecha inicio (dd/mm/aa)");
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel2.setText("Departamento");
-
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(65, 105, 225));
         jLabel9.setText("Fecha final (dd/mm/aa)");
@@ -469,96 +439,85 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
+                        .addGap(621, 621, 621))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7)
+                                        .addGap(42, 42, 42))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel12)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel13)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(350, 350, 350))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton1)
+                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel6))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel7)
-                                                .addGap(42, 42, 42))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(0, 326, Short.MAX_VALUE)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jLabel10)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jLabel11)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jLabel12)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jLabel13)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(350, 350, 350))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jButton1)
-                                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel3))
-                                                .addGap(54, 54, 54)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(jLabel14)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(jLabel8))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(b5)
-                                    .addComponent(b3)
-                                    .addComponent(b1)
-                                    .addComponent(b2)
-                                    .addComponent(b4)
-                                    .addComponent(b6))
-                                .addGap(40, 40, 40))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                                        .addComponent(jLabel3)
+                                        .addGap(76, 76, 76)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(b5)
+                            .addComponent(b3)
+                            .addComponent(b1)
+                            .addComponent(b2)
+                            .addComponent(b4)
+                            .addComponent(b6))
+                        .addGap(40, 40, 40))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(513, 513, 513))
+                .addGap(311, 311, 311))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -576,14 +535,8 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -618,7 +571,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jButton2)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -635,31 +588,14 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
         // TODO add your handling code here:
-        if(evt.getStateChange() == ItemEvent.SELECTED){
-            jComboBox2.removeAllItems();
-            jComboBox2.addItem("Elija una Asignatura...");
-            if (String.valueOf(jComboBox1.getSelectedItem()).equals("Elija un Departamento...") == false){
-                temporal_string = String.valueOf(jComboBox1.getSelectedItem());
-                for (depto dpt : asistencia.deptos) {
-                    if(temporal_string.equals(dpt.getNombre_depto())){
-                        temporal_depto = dpt;
-                    }  
-                }
-                for (asignatura asig : asistencia.asigns){
-                    if(asig.getId_depto() == temporal_depto.getId_depto()){
-                        this.jComboBox2.addItem(asig.getCodigo_asig() + " - " + asig.getNombre_asig());
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_b6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //temporal_s.setId_catedratico(sesion.getId_cated());
+        temporal_s.setId_catedratico(sesion.getCatedraticoid());
         temporal_s.setId_asig(String.valueOf(jComboBox2.getSelectedItem()).substring(0,5).trim());
-        temporal_s.setNumseccion(regresar_sección(temporal_s.getId_asig()
+        temporal_s.setNumseccion(regresar_seccion(temporal_s.getId_asig()
                     ,String.valueOf(jComboBox3.getSelectedItem())));
         llenar_dias(); //No tocar temporal_string
         hi=Integer.parseInt(String.valueOf(jComboBox3.getSelectedItem()));
@@ -684,44 +620,30 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
             else if(horas){
                 JOptionPane.showMessageDialog(this, "Error: horas no permitidas");
             }
-            else if(comprobarUv(Integer.parseInt(jTextField7.getText()))==false){
-                JOptionPane.showMessageDialog(this, "Error: el horario de la sección difiere de las Unidades Valorativas");
-            }
             else{
                 temporal_s.setHi(hi);
                 temporal_s.setHf(hf);
-                //temporal_s.setFecha_i(String.valueOf(inicio));
-                //temporal_s.setFecha_f(String.valueOf(fin));
-                crear_tablaSec(temporal_s.getId_asig()+"-"+temporal_s.getNumseccion());
-                llenar_tablaSec(temporal_s.getId_asig()+"-"+temporal_s.getNumseccion());
-                System.out.println(temporal_s.getId_asig()+"-"+temporal_s.getNumseccion());
-                System.out.println("Dias: " + temporal_s.getDias());
-                System.out.println(inicio);
-                System.out.println(fin); 
-                System.out.println("Hora Inicio: "+String.valueOf(jComboBox3.getSelectedItem()));
-                System.out.println("Hora Final: "+String.valueOf(jComboBox4.getSelectedItem()));
+                temporal_s.setFecha_i(inicio);
+                temporal_s.setFecha_f(fin);
+                this.agregar_seccion(temporal_s);
+                this.llenar_seccion();
                 correos();
                 JOptionPane.showMessageDialog(this, "Sección "+temporal_s.getNumseccion()+" - "
                 + jComboBox2.getSelectedItem() + " creada con éxito.");
                 borrar_ing();
                 estud=false;
-                asistencia.addSeccs();
-                asistencia.addAsigns();
-                asistencia.addDeptos();
-                jButton2.setEnabled(false);
-            }
-            
+            }     
         } 
         catch(DateTimeException x){
-            JOptionPane.showMessageDialog(this, "Por favor revise la coherencia de las fechas ingresadas");
+            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de las fechas ingresadas");
         }
         catch(NullPointerException e){
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Por favor seleccione: días de clase");          
         } 
         catch(NumberFormatException r){
             JOptionPane.showMessageDialog(this, "Error al guardar fechas. Revise e intente de nuevo");
         }
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -733,29 +655,12 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        if(evt.getStateChange() == ItemEvent.SELECTED){
-            temporal_string = String.valueOf(jComboBox2.getSelectedItem());
-            temporal_string = temporal_string.substring(8).trim();
-            if(String.valueOf(jComboBox2.getSelectedItem()).equals("Elija una Asignatura...")){
-                jTextField7.setText("");
-            }
-            else{
-                for (asignatura asig : asistencia.asigns){
-                    if(asig.getNombre_asig().equals(temporal_string)){
-                        jTextField7.setText(String.valueOf(asig.getUv()));
-                    }
-                }
-            }
-        }
+        
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_b1ActionPerformed
-
-    private void b6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -767,7 +672,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox b6;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -776,8 +680,6 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -794,6 +696,5 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

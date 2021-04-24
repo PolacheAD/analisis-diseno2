@@ -23,15 +23,15 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    InternoMain asistencia;
+    //InternoMain asistencia;
     ListClases ListadeClases;
     InfDiario InformeDiario;
     EstuFaltas EstudianteFaltas;
     ResumenPeriodo resumenperiodo;
     ResumenParcial resumenparcial;
     ListadoSemanal listadosemanal;
-    Informe ventinfo;
-    Agg_seccion ventagregar_s;
+    //Informe ventinfo;
+    AgregarSecc ventagregar;
     cambiar contrasena;
     /**
      *
@@ -40,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal(catedratico sesion, Login iniciador) {
         initComponents();
-        asistencia = new InternoMain(sesion,ventagregar_s,iniciador,this);     
+        /*asistencia = new InternoMain(sesion,ventagregar_s,iniciador,this);     
         asistencia.addSeccs();
         asistencia.elim_secciones();
         asistencia.addSeccs();
@@ -49,13 +49,13 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("Deptos"); 
         asistencia.addAsigns();   
         System.out.println("Asigns");
-        ventagregar_s = new Agg_seccion(sesion,asistencia);
-        ventinfo = new Informe(sesion, asistencia);
+        ventinfo = new Informe(sesion, asistencia);*/
+        ventagregar = new AgregarSecc(sesion);
         contrasena=new cambiar(sesion);
         jDesktopPane1.add(contrasena);
-        jDesktopPane1.add(asistencia);
-        jDesktopPane1.add(ventinfo);
-        jDesktopPane1.add(ventagregar_s);
+        //jDesktopPane1.add(asistencia);
+        //jDesktopPane1.add(ventinfo);
+        jDesktopPane1.add(ventagregar);
         jPanel3.setVisible(false);
     }
     /**
@@ -299,6 +299,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Crear Clase");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
@@ -348,7 +353,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -475,19 +480,19 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        ventinfo.llenar_combo();
-        ventinfo.show();
+        //ventinfo.llenar_combo();
+        //ventinfo.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        asistencia.show();
+        //asistencia.show();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ventagregar_s.llenar_combos();
-        ventagregar_s.show();
+        ventagregar.llenar_asigns();
+        ventagregar.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -496,7 +501,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        if(asistencia.clase_ac){
+        /*if(asistencia.clase_ac){
             Object [] opciones ={"Aceptar","Cancelar"};
             int eleccion = JOptionPane.showOptionDialog(rootPane,"¿Desea cerrar el programa? \nSi está tomando asistencia, la lista no se guardará","Cerrar",
             JOptionPane.YES_NO_OPTION,
@@ -513,7 +518,7 @@ public class Principal extends javax.swing.JFrame {
             System.exit(0);
             }else{
             }
-        }
+        }*/
         
     }//GEN-LAST:event_formWindowClosing
 
@@ -575,6 +580,12 @@ public class Principal extends javax.swing.JFrame {
         confirmaciones uwu = new confirmaciones();
         uwu.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        ventagregar.llenar_asigns();
+        ventagregar.show();
+    }//GEN-LAST:event_jLabel4MouseClicked
     
     /**
      * @param args the command line arguments

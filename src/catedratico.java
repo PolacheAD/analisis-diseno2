@@ -9,9 +9,9 @@
  * @author Arnold
  */
 public class catedratico {
-    private int id_cated;
-    private String nombre_cated;
-    private String usuario, correo;
+    private int catedraticoid;
+    private String nombre;
+    private String correo;
 
     public String getCorreo() {
         return correo;
@@ -21,26 +21,19 @@ public class catedratico {
         this.correo = correo;
     }
     
-    public int getId_cated() {
-        return id_cated;
+    public int getCatedraticoid() {
+        return catedraticoid;
     }
 
-    public void setId_cated(int id_cated) {
-        this.id_cated = id_cated;
+    public void setCatedraticoid(int id_cated) {
+        this.catedraticoid = id_cated;
     }
 
-    public String getNombre_cated() {
-        return nombre_cated;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_cated(String nombre_cated) {
-        this.nombre_cated = nombre_cated;
-    }
-     public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombre(String nombre_cated) {
+        this.nombre= nombre_cated;
     }
 }

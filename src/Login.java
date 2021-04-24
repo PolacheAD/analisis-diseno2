@@ -25,18 +25,15 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         this.con = new libreria_sql.Libreria_sql();
         initComponents();
-        sql = "esto para que sirve :v ";
         regreso = null;
         sesion = new catedratico();
         this.setLocationRelativeTo(null);
         registro=new registro();
                 //System.out.println(re.getForeground().getRGB());
-        inicio();
     }
   
     registro registro;
     libreria_sql.Libreria_sql con;
-    String sql;
     String sent;
     ResultSet regreso;
     Principal inicio;
@@ -198,14 +195,13 @@ public class Login extends javax.swing.JFrame {
 
     public void inicio(){
         con.conectar();
-        sent = "select * from catedratico where usuario = \"ardavi88\"";
+        sent = "select * from Catedratico where correo = \""+this.jTextField1.getText()+"\"";
         regreso = con.seleccionar(sent);
         try {
-            if(regreso.getString("pass").equals("mipanamiguel1")){
-                sesion.setUsuario(regreso.getString("usuario"));
-                sesion.setId_cated(regreso.getInt("id_cated"));
-                sesion.setNombre_cated(regreso.getString("nombre_cated"));
-                sesion.setCorreo(regreso.getString("correo"));
+            if(regreso.getString("Password").equals(String.valueOf(jPasswordField1.getPassword()))){
+                sesion.setCatedraticoid(regreso.getInt("CatedraticoID"));
+                sesion.setNombre(regreso.getString("Nombre"));
+                sesion.setCorreo(regreso.getString("Correo"));
                 con.cerrar();
                 inicio = new Principal(sesion,this);
                 inicio.setVisible(true);
@@ -232,6 +228,7 @@ public class Login extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        inicio();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void reMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reMouseEntered
@@ -285,7 +282,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(false);
+                new Login().setVisible(true);
             }
         });
     }
