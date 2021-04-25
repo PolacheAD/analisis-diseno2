@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
     //Informe ventinfo;
     AgregarSecc ventagregar;
     cambiar contrasena;
+    Asistencia asistencia;
     /**
      *
      * @param sesion
@@ -40,7 +41,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal(catedratico sesion, Login iniciador) {
         initComponents();
-        /*asistencia = new InternoMain(sesion,ventagregar_s,iniciador,this);     
+        asistencia = new Asistencia(sesion);
+        asistencia.addSeccs();
+        asistencia.addAsigns();
+        /*asistencia = new InternoMain(sesion,ventagregar_s,iniciador,this); 
         asistencia.addSeccs();
         asistencia.elim_secciones();
         asistencia.addSeccs();
@@ -53,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
         ventagregar = new AgregarSecc(sesion);
         contrasena=new cambiar(sesion);
         jDesktopPane1.add(contrasena);
-        //jDesktopPane1.add(asistencia);
+        jDesktopPane1.add(asistencia);
         //jDesktopPane1.add(ventinfo);
         jDesktopPane1.add(ventagregar);
         jPanel3.setVisible(false);
@@ -486,7 +490,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        //asistencia.show();
+        asistencia.show();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

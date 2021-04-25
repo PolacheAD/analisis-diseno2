@@ -1,3 +1,8 @@
+
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,14 +14,33 @@
  * @author Sergio
  */
 public class confirmacion_instruccion extends javax.swing.JFrame {
-
+    LocalDateTime varreloj;
     /**
      * Creates new form confirmacion_exitosa
      */
     public confirmacion_instruccion() {
         initComponents();
     }
-
+    public void reloj(){
+        Runnable runnable = () -> {
+            do{
+                try {
+                    varreloj=LocalDateTime.now();
+                    Thread.sleep(5000);
+                    if (String.valueOf(varreloj.getMinute()).length() == 1){
+                        jLabel1.setText("Hora: "+varreloj.getHour()+":0"+varreloj.getMinute());
+                    }
+                    else{
+                        jLabel1.setText("Hora: "+varreloj.getHour()+":"+varreloj.getMinute());
+                        }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(confirmacion_instruccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }while (true);
+        };
+        Thread hilo = new Thread(runnable);
+        hilo.start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +50,41 @@ public class confirmacion_instruccion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        instruccion1 = new Instruccion();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Instruccion.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel1.setText("HORA:");
+
+        javax.swing.GroupLayout instruccion1Layout = new javax.swing.GroupLayout(instruccion1);
+        instruccion1.setLayout(instruccion1Layout);
+        instruccion1Layout.setHorizontalGroup(
+            instruccion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(instruccion1Layout.createSequentialGroup()
+                .addGap(574, 574, 574)
+                .addComponent(jLabel1)
+                .addContainerGap(769, Short.MAX_VALUE))
+        );
+        instruccion1Layout.setVerticalGroup(
+            instruccion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, instruccion1Layout.createSequentialGroup()
+                .addContainerGap(798, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(182, 182, 182))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(instruccion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addComponent(instruccion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -83,6 +127,7 @@ public class confirmacion_instruccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Instruccion instruccion1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

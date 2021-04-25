@@ -218,12 +218,13 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
     }
     
     public void correos(){
-        
         for(int i=0; i<model.getRowCount(); i++){
             temp_cuenta = String.valueOf(model.getValueAt(i, 0));
             temp_correo = String.valueOf(model.getValueAt(i, 2));
-            enviar.genQr(temp_cuenta);
-            enviar.enviar(temp_correo);
+            if(cuentas.contains(temp_cuenta) == false){
+                enviar.genQr(temp_cuenta);
+                enviar.enviar(temp_correo);
+            }
         }
     }
     public void borrar_ing(){

@@ -10,7 +10,6 @@
  */
 public class asignatura {
     private String codigo_asig, nombre_asig;
-    int id_depto, uv;
 
     public String getCodigo_asig() {
         return codigo_asig;
@@ -27,21 +26,4 @@ public class asignatura {
     public void setNombre_asig(String nombre_asig) {
         this.nombre_asig = nombre_asig;
     }
-
-    public int getId_depto() {
-        return id_depto;
-    }
-
-    public void setId_depto(int id_depto) {
-        this.id_depto = id_depto;
-    }
-
-    public int getUv() {
-        return uv;
-    }
-
-    public void setUv(int uv) {
-        this.uv = uv;
-    }
-    
 }

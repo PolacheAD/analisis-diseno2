@@ -24,6 +24,9 @@ public class confirmacion_exitosa extends javax.swing.JFrame {
     public confirmacion_exitosa() {
         initComponents();
     }
+    public void Nombre(String nom){
+        this.jLabel1.setText(nom);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,26 +37,47 @@ public class confirmacion_exitosa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        exitoso1 = new Exitoso();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/correctoFinal.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel1.setText("ARNOLD DAVID POLANCO RAMOS");
+
+        javax.swing.GroupLayout exitoso1Layout = new javax.swing.GroupLayout(exitoso1);
+        exitoso1.setLayout(exitoso1Layout);
+        exitoso1Layout.setHorizontalGroup(
+            exitoso1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitoso1Layout.createSequentialGroup()
+                .addGap(469, 469, 469)
+                .addComponent(jLabel1)
+                .addContainerGap(470, Short.MAX_VALUE))
+        );
+        exitoso1Layout.setVerticalGroup(
+            exitoso1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitoso1Layout.createSequentialGroup()
+                .addContainerGap(667, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(313, 313, 313))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(exitoso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addComponent(exitoso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -109,6 +133,7 @@ public class confirmacion_exitosa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Exitoso exitoso1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

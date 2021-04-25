@@ -29,7 +29,7 @@ public class asuntosDeTiempo {
         dias_string = dias.split(",");
         for(int i=0;i<dias_string.length;i++){
             switch (dias_string[i]){
-                case "L":
+                case "Lu":
                     dias_int.add(1);
                     break;       
                 case "Ma":
@@ -38,15 +38,17 @@ public class asuntosDeTiempo {
                 case "Mi":
                     dias_int.add(3);
                     break; 
-                case "J":
+                case "Ju":
                     dias_int.add(4);
                     break; 
-                case "V":
+                case "Vi":
                     dias_int.add(5);
                     break; 
-                case "S":
+                case "Sa":
                     dias_int.add(6);
                     break;
+                case "Do":
+                    dias_int.add(7);
             }
         }
         for(int dia : dias_int){
@@ -62,7 +64,7 @@ public class asuntosDeTiempo {
         dias_string = dias.split(",");
         for(int i=0;i<dias_string.length;i++){
             switch (dias_string[i]){
-                case "L":
+                case "Lu":
                     dias_int.add(1);
                     break;       
                 case "Ma":
@@ -71,19 +73,21 @@ public class asuntosDeTiempo {
                 case "Mi":
                     dias_int.add(3);
                     break; 
-                case "J":
+                case "Ju":
                     dias_int.add(4);
                     break; 
-                case "V":
+                case "Vi":
                     dias_int.add(5);
                     break; 
-                case "S":
+                case "Sa":
                     dias_int.add(6);
                     break;
+                case "Do":
+                    dias_int.add(7);
             }
         }
         switch (evaluar){
-                case "L":
+                case "Lu":
                     evaluar_int = 1;
                     break;       
                 case "Ma":
@@ -92,15 +96,17 @@ public class asuntosDeTiempo {
                 case "Mi":
                     evaluar_int = 3;
                     break; 
-                case "J":
+                case "Ju":
                     evaluar_int = 4;
                     break; 
-                case "V":
+                case "Vi":
                     evaluar_int = 5;
                     break; 
-                case "S":
+                case "Sa":
                     evaluar_int = 6;
                     break;
+                case "Do":
+                    evaluar_int = 7;
             }
         for(int dia : dias_int){
             if (evaluar_int == dia){
@@ -112,17 +118,19 @@ public class asuntosDeTiempo {
     public String dia_letra(int dia_num){
         switch(dia_num){
             case 1:
-                return "L";
+                return "Lu";
             case 2:
                 return "Ma";
             case 3:
                 return "Mi";
             case 4:
-                return "J";
+                return "Ju";
             case 5:
-                return "V";
+                return "Vi";
             case 6:
-                return "S";
+                return "Sa";
+            case 7:
+                return "Do";
         }
         return "";
     }

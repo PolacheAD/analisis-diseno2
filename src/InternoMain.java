@@ -94,7 +94,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         this.sesion = sesion;
         this.iniciador = iniciador;
         this.iniciado = iniciado;
-        jTextField7.setText(sesion.getNombre_cated());
+        //jTextField7.setText(sesion.getNombre_cated());
         this.ventagregar_s = s;
         this.seccs = new ArrayList();
         this.asigns = new ArrayList();
@@ -650,10 +650,10 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                         break;
                     }
                 }
-                temporal_int = tempasign.getId_depto();
+                //temporal_int = tempasign.getId_depto();
                 temporal_string = tempasign.getCodigo_asig();
                 System.out.println(temporal_string);
-                jTextField11.setText(String.valueOf(tempasign.getUv()));
+                //jTextField11.setText(String.valueOf(tempasign.getUv()));
 
                 for(depto dpt : deptos){
                     if(temporal_int == dpt.getId_depto()){
@@ -671,8 +671,8 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                 jTextField5.setText(String.valueOf(tempsecc.getHi()));
                 jTextField9.setText(String.valueOf(tempsecc.getHf()));
                 jTextField10.setText(tempsecc.getDias());
-                jTextField2.setText(tempsecc.getFecha_i());
-                jTextField12.setText(tempsecc.getFecha_f());
+                //jTextField2.setText(tempsecc.getFecha_i());
+                //TextField12.setText(tempsecc.getFecha_f());
                 jButton5.setEnabled(true);
             }
         }
@@ -747,7 +747,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         con.cerrar();
     }
     public void verificar_semana(String secc){
-        if(tempsecc.getSemana() != Cl.get(Calendar.WEEK_OF_YEAR) ){
+       /* if(tempsecc.getSemana() != Cl.get(Calendar.WEEK_OF_YEAR) ){
             con.conectar();
             sent = "update ["+secc+"] set "
                     + "L = '-', "
@@ -762,12 +762,12 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                     + "seccion = '"+tempsecc.getNumseccion()+"' and "
                     + "id_asig = '"+tempsecc.getId_asig()+"' ";
             con.cerrar();
-        }
+        }*/
     }
     public void elim_secciones(){
         con.conectar();
         for(int i = 0; i<seccs.size(); i++){
-            fecha_general = LocalDate.parse(seccs.get(i).getFecha_f(), formato);
+           // fecha_general = LocalDate.parse(seccs.get(i).getFecha_f(), formato);
             CF.setTime(Date.valueOf(fecha_general));
             if(Cl.get(Calendar.WEEK_OF_YEAR) - CF.get(Calendar.WEEK_OF_YEAR)   >= 2
                     && fecha_hoy.isAfter(fecha_general)){
@@ -897,11 +897,11 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                 tempsecc.setId_catedratico(regreso.getInt("id_catedratico"));
                 tempsecc.setHi(regreso.getInt("hi"));
                 tempsecc.setHf(regreso.getInt("hf"));
-                tempsecc.setFecha_i(regreso.getString("fecha_inicio"));
-                tempsecc.setFecha_f(regreso.getString("fecha_fin"));
+                //tempsecc.setFecha_i(regreso.getString("fecha_inicio"));
+                //tempsecc.setFecha_f(regreso.getString("fecha_fin"));
                 tempsecc.setDias(regreso.getString("dias"));
                 tempsecc.setFaltas_cated(regreso.getInt("faltas_cated"));
-                tempsecc.setSemana(regreso.getInt("semana"));
+                //tempsecc.setSemana(regreso.getInt("semana"));
                 seccs.add(tempsecc);
             }
             System.out.println(seccs.size());
@@ -942,13 +942,13 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
             tempasign = new asignatura();
             tempasign.setCodigo_asig(regreso.getString("codigo_asig"));
             tempasign.setNombre_asig(regreso.getString("nombre_asig"));
-            tempasign.setId_depto(regreso.getInt("id_depto"));
-            tempasign.setUv(regreso.getInt("uv"));
+            //tempasign.setId_depto(regreso.getInt("id_depto"));
+            //tempasign.setUv(regreso.getInt("uv"));
             asigns.add(tempasign);
             }
             llenar_combo();
             System.out.println(asigns.size());
-            System.out.println(asigns.get(0).getUv());
+            //System.out.println(asigns.get(0).getUv());
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
@@ -957,7 +957,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
         
     }
     public void llenar_combo(){
-        jComboBox1.removeAllItems();
+       /* jComboBox1.removeAllItems();
         jComboBox1.addItem("Elija una Clase...");
         for (seccion secc : seccs) {
             for(asignatura asign : asigns){
@@ -967,7 +967,7 @@ public class InternoMain extends javax.swing.JInternalFrame implements Runnable,
                    break;
                 }
             }   
-        }
+        }*/
     }
     
     public static void main(String args[]) {
