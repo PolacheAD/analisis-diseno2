@@ -41,7 +41,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal(catedratico sesion, Login iniciador) {
         initComponents();
-        asistencia = new Asistencia(sesion);
+        asistencia = new Asistencia(sesion, iniciador, this);
         asistencia.addSeccs();
         asistencia.addAsigns();
         /*asistencia = new InternoMain(sesion,ventagregar_s,iniciador,this); 

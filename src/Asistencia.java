@@ -49,6 +49,8 @@ public class Asistencia extends javax.swing.JInternalFrame {
    DateTimeFormatter formato;
    asuntosDeTiempo verificar;
    Webcam webcam;
+   Login iniciador;
+   Principal iniciado;
    confirmacion_instruccion confinst;
    confirmacion_exitosa confexito;
    confirmacion_error conferror;
@@ -56,8 +58,10 @@ public class Asistencia extends javax.swing.JInternalFrame {
     /**
      * Creates new form Asistencia
      */
-    public Asistencia(catedratico sesion) {
+    public Asistencia(catedratico sesion, Login iniciador, Principal iniciado) {
         initComponents();
+        this.iniciador = iniciador;
+        this.iniciado = iniciado;
         verificar = new asuntosDeTiempo();
         fecha_hoy = LocalDate.now();
         this.sesion = sesion;
@@ -681,7 +685,10 @@ public class Asistencia extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- 
+        iniciador.cerrarsesion();
+        iniciado.dispose();
+        iniciador.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
