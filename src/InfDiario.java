@@ -1,15 +1,20 @@
 
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -39,23 +44,93 @@ public class InfDiario extends javax.swing.JFrame {
     File abrir;
     JFileChooser file;
     DefaultTableModel modelo;
-    LocalDate hoy;
+    LocalDate hoy, tempFecha;
     int filainicial;
     int asistencia;
     int inasistencia;
-    
+    seccion tempsecc;
+    ArrayList <seccion> seccs;
+    libreria_sql.Libreria_sql con;
+    ResultSet regreso;
+    catedratico sesion;
+    asignatura tempasign;
+    ArrayList <asignatura> asigns;
+    String sent, temporal_string, nsec;
     /**
      * Creates new form NewJFrame
      */
-    public InfDiario() {
+    public InfDiario(catedratico sesion) {
         initComponents();
+        this.sesion = sesion;
+        con = new libreria_sql.Libreria_sql();
         hoy = LocalDate.now();
         jLabel7.setText("Fecha: " + hoy.toString());
         jTextField2.setText(hoy.toString());
         modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
+        jTextField2.setText(String.valueOf(hoy));
         contarN();
     }
     
+    public void llenar_combo(){
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Elija una Clase...");
+        for (seccion secc : seccs) {
+            for(asignatura asign : asigns){
+                if(secc.getId_asig().equals(asign.getCodigo_asig()) /*&& secc.getId_catedratico() == sesion.getCatedraticoid()*/){
+                   temporal_string = asign.getNombre_asig();
+                   this.jComboBox1.addItem(secc.getNumseccion() + " - " + temporal_string);
+                   break;
+                }
+            }   
+        }
+    }
+    
+    public void addSeccs(){
+        seccs = new ArrayList();
+        con.conectar();
+        sent = "select * from InfoSeccion where CatedraticoID = '"+sesion.getCatedraticoid()+"'";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempsecc = new seccion();
+                tempsecc.setNumseccion(regreso.getString("SeccionID"));
+                tempsecc.setId_asig(regreso.getString("AsignaturaID"));
+                tempsecc.setId_catedratico(regreso.getInt("CatedraticoID"));
+                tempsecc.setHi(regreso.getInt("Horai"));
+                tempsecc.setHf(regreso.getInt("Horaf"));
+                tempsecc.setFecha_i(LocalDate.parse(regreso.getString("Fechai")));
+                tempsecc.setFecha_f(LocalDate.parse(regreso.getString("Fechaf")));
+                tempsecc.setDias(regreso.getString("Dias"));
+                tempsecc.setFaltas_cated(regreso.getInt("DiasSinClase"));
+                seccs.add(tempsecc);
+            }
+            System.out.println(seccs.size());
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    public void addAsigns(){
+        asigns = new ArrayList();
+        con.conectar();
+        sent ="select AsignaturaID, Nombre from Asignatura ";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempasign = new asignatura();
+                tempasign.setCodigo_asig(regreso.getString("AsignaturaID"));
+                tempasign.setNombre_asig(regreso.getString("Nombre"));
+                asigns.add(tempasign);
+            }
+            llenar_combo();
+        } catch (SQLException ex) {
+            Logger.getLogger(Asistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
     public void contarN() {
         inasistencia = 0;
         for(int i=0; i<modelo.getRowCount();i++){
@@ -66,6 +141,17 @@ public class InfDiario extends javax.swing.JFrame {
         jTextField3.setText(String.valueOf(inasistencia));
         
         inasistencia = 0;
+    }
+    public void contarS() {
+        asistencia = 0;
+        for(int i=0; i<modelo.getRowCount();i++){
+                if ( String.valueOf(jTable1.getModel().getValueAt(i, 2)).equals("S") ) {
+                    asistencia = asistencia + 1;
+                }
+            }
+        jTextField4.setText(String.valueOf(asistencia));
+        
+        asistencia = 0;
     }
     
     public XSSFWorkbook crear_libro(){
@@ -202,11 +288,10 @@ public class InfDiario extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jTextField3.setText("0");
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel6.setText("U.V.");
+        jLabel6.setText("Asistencias");
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(65, 105, 225));
@@ -214,7 +299,11 @@ public class InfDiario extends javax.swing.JFrame {
 
         jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jTextField4.setText("3");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(65, 105, 225));
@@ -230,7 +319,6 @@ public class InfDiario extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jTextField1.setText("IS-2000");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -318,6 +406,11 @@ public class InfDiario extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(65, 105, 225));
         jButton2.setText("Buscar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -333,6 +426,11 @@ public class InfDiario extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(65, 105, 225));
         jButton4.setText("Clase siguiente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N
 
@@ -401,13 +499,13 @@ public class InfDiario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
+                        .addGap(275, 275, 275)
                         .addComponent(jLabel5)
-                        .addGap(19, 19, 19)
+                        .addGap(38, 38, 38)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
+                        .addGap(88, 88, 88)
                         .addComponent(jLabel6)
-                        .addGap(19, 19, 19)
+                        .addGap(20, 20, 20)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(414, 414, 414)
@@ -500,13 +598,37 @@ public class InfDiario extends javax.swing.JFrame {
 		fileOuS.close();
 		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
             } catch (IOException ex) {
-                System.out.println("Error");
+                JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
             }
         }  
     }//GEN-LAST:event_Boton1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            tempasign = new asignatura();
+            tempsecc = new seccion(); 
+            temporal_string = String.valueOf(jComboBox1.getSelectedItem());
+            if(temporal_string.equals("Elija una Clase...")){
+                jTextField1.setText("");
+            }
+            else{
+                nsec = temporal_string.substring(0, 4).trim();
+                temporal_string = temporal_string.substring(6).trim();
+                for(asignatura asign : asigns){
+                    if(temporal_string.equals(asign.getNombre_asig())){
+                        tempasign = asign;
+                        break;
+                    }
+                }
+                jTextField1.setText(tempasign.getCodigo_asig());
+                /*for(seccion secc : seccs){
+                    if(secc.getNumseccion().equals(jTextField4.getText()) && temporal_string.equals(secc.getId_asig())){
+                        tempsecc = secc;
+                        break;
+                    }
+                }*/
+            }
+        }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -521,7 +643,34 @@ public class InfDiario extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        tempFecha=LocalDate.parse(jTextField2.getText()).minusDays(1);
+        jTextField2.setText(String.valueOf(tempFecha));
+        jButton2.doClick();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        con.conectar();
+        modelo = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(0);
+        jTable1.setModel(modelo);
+        sent = "select Nombre, NumeroCuenta, Asistencia from vAsistenciaDiaria "
+                + "where AsignaturaID = '"+jTextField1.getText()+"' and SeccionID = '"
+                +nsec+"' and Fecha = '"+jTextField2.getText()+"'";
+        con.seleccionar_jtable(sent, jTable1);
+        contarN();
+        contarS();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        tempFecha=LocalDate.parse(jTextField2.getText()).plusDays(1);
+        jTextField2.setText(String.valueOf(tempFecha));
+        jButton2.doClick();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -554,7 +703,7 @@ public class InfDiario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InfDiario().setVisible(true);
+                //new InfDiario().setVisible(true);
             }
         });
     }

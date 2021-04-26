@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,14 +38,31 @@ public class ListClases extends javax.swing.JFrame {
     JFileChooser file;
     DefaultTableModel modelo;
     LocalDate hoy;
+    catedratico sesion;
+    libreria_sql.Libreria_sql con;
+    ResultSet regreso;
+    String sent;
     int filainicial;
     /**
      * Creates new form NewJFrame1
      */
-    public ListClases() {
+    public ListClases(catedratico sesion) {
         initComponents();
+        this.sesion = sesion;
+        con = new libreria_sql.Libreria_sql();
         hoy = LocalDate.now();
         jLabel7.setText("Fecha: " + hoy.toString());
+    }
+    
+    public void recListado(){
+        jLabel3.setText("Catedrático: "+sesion.getNombre());
+        modelo = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(0);
+        jTable1.setModel(modelo);
+        con.conectar();
+        sent = "select Nombre, AsignaturaID, SeccionID, NE from vListClases "
+                + "where CatedraticoID = '"+sesion.getCatedraticoid()+"'";
+        con.seleccionar_jtable(sent, jTable1);
     }
     
     public XSSFWorkbook crear_libro(){
@@ -189,7 +207,7 @@ public class ListClases extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel3.setText("Catedrático: Brénedin Enrique Núñez");
+        jLabel3.setText("Catedrático: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,12 +219,11 @@ public class ListClases extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(174, 174, 174)))
+                            .addComponent(jLabel7)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,7 +306,7 @@ public class ListClases extends javax.swing.JFrame {
 		fileOuS.close();
 		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
             } catch (IOException ex) {
-                System.out.println("Error");
+                JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
             }
         }    
     }//GEN-LAST:event_Boton1ActionPerformed
@@ -325,7 +342,7 @@ public class ListClases extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListClases().setVisible(true);
+                //new ListClases().setVisible(true);
             }
         });
     }

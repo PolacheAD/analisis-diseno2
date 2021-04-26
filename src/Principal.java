@@ -34,6 +34,7 @@ public class Principal extends javax.swing.JFrame {
     AgregarSecc ventagregar;
     cambiar contrasena;
     Asistencia asistencia;
+    catedratico sesion;
     /**
      *
      * @param sesion
@@ -41,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal(catedratico sesion, Login iniciador) {
         initComponents();
+        this.sesion = sesion;
         asistencia = new Asistencia(sesion, iniciador, this);
         asistencia.addSeccs();
         asistencia.addAsigns();
@@ -545,13 +547,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InformeDiario = new InfDiario();
+        InformeDiario = new InfDiario(sesion);
+        InformeDiario.addSeccs();
+        InformeDiario.addAsigns();
         InformeDiario.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ListadeClases = new ListClases();
+        ListadeClases = new ListClases(sesion);
+        ListadeClases.recListado();
         ListadeClases.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -563,19 +568,25 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        EstudianteFaltas = new EstuFaltas();
+        EstudianteFaltas = new EstuFaltas(sesion);
+        EstudianteFaltas.addSeccs();
+        EstudianteFaltas.addAsigns();
         EstudianteFaltas.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        resumenperiodo = new ResumenPeriodo();
+        resumenperiodo = new ResumenPeriodo(sesion);
+        resumenperiodo.addSeccs();
+        resumenperiodo.addAsigns();
         resumenperiodo.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        resumenparcial = new ResumenParcial();
+        resumenparcial = new ResumenParcial(sesion);
+        resumenparcial.addSeccs();
+        resumenparcial.addAsigns();
         resumenparcial.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 

@@ -138,6 +138,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
     }
     public void leer_estud(File abrir){
         hoja = "Hoja1";
+        model.setRowCount(0);
         try (FileInputStream entrada = new FileInputStream(abrir)) {
             XSSFWorkbook workbook = new XSSFWorkbook(entrada);
             XSSFSheet sheet = workbook.getSheetAt(0);

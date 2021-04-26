@@ -1,10 +1,14 @@
 
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,12 +49,85 @@ public class ResumenPeriodo extends javax.swing.JFrame {
     DefaultTableModel modelo;
     LocalDate hoy;
     int filainicial;
+    
+    seccion tempsecc;
+    ArrayList <seccion> seccs;
+    libreria_sql.Libreria_sql con;
+    ResultSet regreso;
+    catedratico sesion;
+    asignatura tempasign;
+    ArrayList <asignatura> asigns;
+    String sent, temporal_string, nsec;
     /**
      * Creates new form ResumenPeriodo
      */
-    public ResumenPeriodo() {
+    public ResumenPeriodo(catedratico sesion) {
         initComponents();
         jPanel2.setVisible(false);
+        this.sesion = sesion;
+        con = new libreria_sql.Libreria_sql();
+        modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
+    }
+    
+    public void llenar_combo(){
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Elija una Clase...");
+        for (seccion secc : seccs) {
+            for(asignatura asign : asigns){
+                if(secc.getId_asig().equals(asign.getCodigo_asig()) /*&& secc.getId_catedratico() == sesion.getCatedraticoid()*/){
+                   temporal_string = asign.getNombre_asig();
+                   this.jComboBox1.addItem(secc.getNumseccion() + " - " + temporal_string);
+                   break;
+                }
+            }   
+        }
+    }
+    
+    public void addSeccs(){
+        seccs = new ArrayList();
+        con.conectar();
+        sent = "select * from InfoSeccion where CatedraticoID = '"+sesion.getCatedraticoid()+"'";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempsecc = new seccion();
+                tempsecc.setNumseccion(regreso.getString("SeccionID"));
+                tempsecc.setId_asig(regreso.getString("AsignaturaID"));
+                tempsecc.setId_catedratico(regreso.getInt("CatedraticoID"));
+                tempsecc.setHi(regreso.getInt("Horai"));
+                tempsecc.setHf(regreso.getInt("Horaf"));
+                tempsecc.setFecha_i(LocalDate.parse(regreso.getString("Fechai")));
+                tempsecc.setFecha_f(LocalDate.parse(regreso.getString("Fechaf")));
+                tempsecc.setDias(regreso.getString("Dias"));
+                tempsecc.setFaltas_cated(regreso.getInt("DiasSinClase"));
+                seccs.add(tempsecc);
+            }
+            System.out.println(seccs.size());
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    public void addAsigns(){
+        asigns = new ArrayList();
+        con.conectar();
+        sent ="select AsignaturaID, Nombre from Asignatura ";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempasign = new asignatura();
+                tempasign.setCodigo_asig(regreso.getString("AsignaturaID"));
+                tempasign.setNombre_asig(regreso.getString("Nombre"));
+                asigns.add(tempasign);
+            }
+            llenar_combo();
+        } catch (SQLException ex) {
+            Logger.getLogger(Asistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
     }
     
     public XSSFWorkbook crear_libro(){
@@ -178,6 +255,11 @@ public class ResumenPeriodo extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instalaciones Electricas" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -317,11 +399,49 @@ public class ResumenPeriodo extends javax.swing.JFrame {
 		fileOuS.close();
 		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
             } catch (IOException ex) {
-                System.out.println("Error");
+                JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
             }
         }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            tempasign = new asignatura();
+            tempsecc = new seccion(); 
+            temporal_string = String.valueOf(jComboBox1.getSelectedItem());
+            if(temporal_string.equals("Elija una Clase...")){
+                
+            }
+            else{
+                nsec = temporal_string.substring(0, 4).trim();
+                temporal_string = temporal_string.substring(6).trim();
+                for(asignatura asign : asigns){
+                    if(temporal_string.equals(asign.getNombre_asig())){
+                        tempasign = asign;
+                        break;
+                    }
+                }
+                for(seccion secc : seccs){
+                    if(secc.getNumseccion().equals(nsec) && tempasign.getCodigo_asig().equals(secc.getId_asig())){
+                        tempsecc = secc;
+                        break;
+                    }
+                }
+                con.conectar();
+                modelo = (DefaultTableModel)jTable1.getModel();
+                modelo.setRowCount(0);
+                jTable1.setModel(modelo);
+
+                sent = "select Nombre, NumeroCuenta, Asistencias, Inasistencias, Excusas from vResPer "
+                        + "where AsignaturaID = '"+tempsecc.getId_asig()+"' and SeccionID = '"
+                        +tempsecc.getNumseccion()+"'";
+                con.seleccionar_jtable(sent, jTable1);
+            }
+        }
+        
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -353,7 +473,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResumenPeriodo().setVisible(true);
+                //new ResumenPeriodo().setVisible(true);
             }
         });
     }

@@ -1,5 +1,12 @@
 
+import java.awt.event.ItemEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,16 +21,88 @@ import java.time.LocalDate;
 public class EstuFaltas extends javax.swing.JFrame {
     
     LocalDate hoy;
+    seccion tempsecc;
+    ArrayList <seccion> seccs;
+    libreria_sql.Libreria_sql con;
+    DefaultTableModel modelo;
+    ResultSet regreso;
+    catedratico sesion;
+    asignatura tempasign;
+    ArrayList <asignatura> asigns;
+    String sent, temporal_string, nsec;
     /**
      * Creates new form EstuFaltas
      */
-    public EstuFaltas() {
+    public EstuFaltas(catedratico sesion) {
         initComponents();
+        this.sesion = sesion;
         hoy = LocalDate.now();
         jLabel7.setText("Fecha: " + hoy.toString());
-        
+        con = new libreria_sql.Libreria_sql();
+        modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
     }
-
+    
+    public void llenar_combo(){
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Elija una Clase...");
+        for (seccion secc : seccs) {
+            for(asignatura asign : asigns){
+                if(secc.getId_asig().equals(asign.getCodigo_asig()) /*&& secc.getId_catedratico() == sesion.getCatedraticoid()*/){
+                   temporal_string = asign.getNombre_asig();
+                   this.jComboBox1.addItem(secc.getNumseccion() + " - " + temporal_string);
+                   break;
+                }
+            }   
+        }
+    }
+    
+    public void addSeccs(){
+        seccs = new ArrayList();
+        con.conectar();
+        sent = "select * from InfoSeccion where CatedraticoID = '"+sesion.getCatedraticoid()+"'";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempsecc = new seccion();
+                tempsecc.setNumseccion(regreso.getString("SeccionID"));
+                tempsecc.setId_asig(regreso.getString("AsignaturaID"));
+                tempsecc.setId_catedratico(regreso.getInt("CatedraticoID"));
+                tempsecc.setHi(regreso.getInt("Horai"));
+                tempsecc.setHf(regreso.getInt("Horaf"));
+                tempsecc.setFecha_i(LocalDate.parse(regreso.getString("Fechai")));
+                tempsecc.setFecha_f(LocalDate.parse(regreso.getString("Fechaf")));
+                tempsecc.setDias(regreso.getString("Dias"));
+                tempsecc.setFaltas_cated(regreso.getInt("DiasSinClase"));
+                seccs.add(tempsecc);
+            }
+            System.out.println(seccs.size());
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    public void addAsigns(){
+        asigns = new ArrayList();
+        con.conectar();
+        sent ="select AsignaturaID, Nombre from Asignatura ";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempasign = new asignatura();
+                tempasign.setCodigo_asig(regreso.getString("AsignaturaID"));
+                tempasign.setNombre_asig(regreso.getString("Nombre"));
+                asigns.add(tempasign);
+            }
+            llenar_combo();
+        } catch (SQLException ex) {
+            Logger.getLogger(Asistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,19 +141,19 @@ public class EstuFaltas extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Astrid", "20156685542", "15"},
-                {"Santiago", "20172016115", "20"},
-                {"Selvin", "20181156332", "17"}
+                {"Astrid", "20156685542", null, "15"},
+                {"Santiago", "20172016115", null, "20"},
+                {"Selvin", "20181156332", null, "17"}
             },
             new String [] {
-                "Nombre del estudiante", "No. Cuenta", "No. Faltas"
+                "Nombre del estudiante", "No. Cuenta", "Correo Electrónico", "No. Faltas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -188,7 +267,41 @@ public class EstuFaltas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            tempasign = new asignatura();
+            tempsecc = new seccion(); 
+            temporal_string = String.valueOf(jComboBox1.getSelectedItem());
+            if(temporal_string.equals("Elija una Clase...")){
+                modelo = (DefaultTableModel)jTable1.getModel();
+                modelo.setRowCount(0);
+                jTable1.setModel(modelo);
+            }
+            else{
+                nsec = temporal_string.substring(0, 4).trim();
+                temporal_string = temporal_string.substring(6).trim();
+                for(asignatura asign : asigns){
+                    if(temporal_string.equals(asign.getNombre_asig())){
+                        tempasign = asign;
+                        break;
+                    }
+                }
+                for(seccion secc : seccs){
+                    if(secc.getNumseccion().equals(nsec) && tempasign.getCodigo_asig().equals(secc.getId_asig())){
+                        tempsecc = secc;
+                        break;
+                    }
+                }
+                con.conectar();
+                modelo = (DefaultTableModel)jTable1.getModel();
+                modelo.setRowCount(0);
+                jTable1.setModel(modelo);
 
+                sent = "select Nombre, NumeroCuenta, Correo, Inasistencias from vExcepcion "
+                        + "where AsignaturaID = '"+tempsecc.getId_asig()+"' and SeccionID = '"
+                        +tempsecc.getNumseccion()+"'";
+                con.seleccionar_jtable(sent, jTable1);
+            }
+        }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
@@ -221,7 +334,7 @@ public class EstuFaltas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EstuFaltas().setVisible(true);
+                //new EstuFaltas().setVisible(true);
             }
         });
     }
