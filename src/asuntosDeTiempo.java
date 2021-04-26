@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,6 +59,42 @@ public class asuntosDeTiempo {
         }
         return false;
     }
+    
+    public boolean siToca2(String dias, LocalDate diasem){
+        dias_int = new ArrayList();
+        dias_string = dias.split(",");
+        for(int i=0;i<dias_string.length;i++){
+            switch (dias_string[i]){
+                case "Lu":
+                    dias_int.add(1);
+                    break;       
+                case "Ma":
+                    dias_int.add(2);
+                    break; 
+                case "Mi":
+                    dias_int.add(3);
+                    break; 
+                case "Ju":
+                    dias_int.add(4);
+                    break; 
+                case "Vi":
+                    dias_int.add(5);
+                    break; 
+                case "Sa":
+                    dias_int.add(6);
+                    break;
+                case "Do":
+                    dias_int.add(7);
+            }
+        }
+        for(int dia : dias_int){
+            if (diasem.getDayOfWeek().getValue() == dia){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean siToca_faltas(String dias, String evaluar){
         dias_int = new ArrayList();
         int evaluar_int = 0;

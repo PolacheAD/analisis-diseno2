@@ -68,6 +68,7 @@ public class ResumenPeriodo extends javax.swing.JFrame {
         con = new libreria_sql.Libreria_sql();
         modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
+        jTable1.setModel(modelo);
     }
     
     public void llenar_combo(){

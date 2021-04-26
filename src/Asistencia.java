@@ -54,7 +54,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
    confirmacion_instruccion confinst;
    confirmacion_exitosa confexito;
    confirmacion_error conferror;
-   boolean claseactiva, encontrado;
+   boolean claseactiva, encontrado, encontrado2;
     /**
      * Creates new form Asistencia
      */
@@ -70,6 +70,8 @@ public class Asistencia extends javax.swing.JInternalFrame {
         this.seccs = new ArrayList();
         jTextField7.setText(sesion.getNombre());
         locaDate = LocalDateTime.now();
+        jButton1.setEnabled(false);
+        jTextField1.setEditable(false);
         formato= DateTimeFormatter.ofPattern("uuuu-MM-dd")
                 .withResolverStyle(ResolverStyle.STRICT);
     }
@@ -245,8 +247,6 @@ public class Asistencia extends javax.swing.JInternalFrame {
                                     System.out.println("Ingresado");
                                 }
                                 estuds.get(i).setAsis_hoy("S");
-                                jTextField1.setText(estuds.get(i).getNombre_es());
-                                jTextField6.setText(String.valueOf(estuds.get(i).getFaltas()));
                                 jLabel4.setText(asistieron + " de " +estuds.size()+ " estudiantes presentes");
                                 encontrado=true;
                                 confexito = new confirmacion_exitosa();
@@ -318,16 +318,15 @@ public class Asistencia extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        texto2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        texto = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -439,7 +438,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel2.setText("Estudiante: ");
+        jLabel2.setText("Código:");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -447,8 +446,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(250, 250, 250));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 320, 250));
-        jPanel1.add(texto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 250));
 
         jLabel4.setText(" ");
 
@@ -464,11 +462,11 @@ public class Asistencia extends javax.swing.JInternalFrame {
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel8.setText("Inasistencias: ");
+        jLabel8.setText("Nombre:");
 
         jLabel11.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel11.setText("Información del estudiante");
+        jLabel11.setText("Ingreso Manual de Asistencia");
 
         jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -484,15 +482,19 @@ public class Asistencia extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel1.setText("Esperando Código QR...");
-
-        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
-        texto.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        texto.setBorder(null);
+        jButton1.setText("Registrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -543,7 +545,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
                                         .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel21)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addContainerGap(35, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jTextField10)
                                         .addGap(100, 100, 100))))))
@@ -572,21 +574,25 @@ public class Asistencia extends javax.swing.JInternalFrame {
                                 .addGap(355, 355, 355))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel4)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(150, 150, 150))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel8))
-                                .addGap(56, 56, 56)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel8))
+                                            .addGap(56, 56, 56)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                                                .addComponent(jTextField1)))
+                                        .addComponent(jLabel1)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(95, 95, 95))))
         );
@@ -649,7 +655,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -657,24 +663,21 @@ public class Asistencia extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel4)
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(8, 8, 8)
                         .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
-                        .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 849, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -771,6 +774,8 @@ public class Asistencia extends javax.swing.JInternalFrame {
             //jLabel4.setText(asistieron + " de " +estuds.size()+ " estudiantes presentes");
             claseactiva = true;
             initWebcam();
+            jButton1.setEnabled(true);
+            jTextField1.setEditable(true);
             confinst = new confirmacion_instruccion();
             confinst.reloj();
             confinst.setVisible(true);
@@ -782,14 +787,47 @@ public class Asistencia extends javax.swing.JInternalFrame {
         confinst.dispose();
         webcam.close();
         cerrar_asistencia();
+        jLabel4.setText(jLabel4.getText()+" - Clase Finalizada");
+        jLabel1.setText("");
         jButton3.setEnabled(true);
         jButton5.setEnabled(true);
         jComboBox1.setEnabled(true);
         jButton4.setEnabled(false);
+        jButton1.setEnabled(false);
+        jTextField1.setText("");
+        jTextField6.setText("");
+        jTextField1.setEditable(false);
+        JOptionPane.showMessageDialog(null, "Clase finalizada.");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        encontrado2=false;
+        for(int i=0; i<estuds.size();i++){
+            if(jTextField1.getText().equals(estuds.get(i).getCuenta_es())){
+                encontrado2 = true;
+                if(estuds.get(i).getAsis_hoy().equals("-")){
+                    asistieron++;
+                    System.out.println("Ingresado");
+                }
+                jTextField6.setText(estuds.get(i).getNombre_es());
+                estuds.get(i).setAsis_hoy("S");
+                jLabel4.setText(asistieron + " de " +estuds.size()+ " estudiantes presentes");
+                jLabel1.setText(estuds.get(i).getCuenta_es()+" Registrado correctamente.");
+            }
+        }
+        if(encontrado2 == false){
+            jLabel1.setText("Error: No se encontró al estudiante solicitado.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -827,7 +865,5 @@ public class Asistencia extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextField texto;
-    private javax.swing.JTextField texto2;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,11 +1,15 @@
 
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.xssf.usermodel.DefaultIndexedColorMap;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
@@ -43,6 +46,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
     LocalDate fecha, lunes, sabado;
     java.util.Date fecha_cal;
     java.sql.Date fecha_sql;
+    ArrayList <LocalDate> semana;
     int diasemana;
     File abrir;
     JFileChooser file;
@@ -50,20 +54,95 @@ public class ListadoSemanal extends javax.swing.JFrame {
     int filainicial;
     Date hoy;
     Calendar calendario;
+    asuntosDeTiempo verificar;
+
+    catedratico sesion;
+    seccion tempsecc;
+    ArrayList <seccion> seccs;
+    libreria_sql.Libreria_sql con;
+    ResultSet regreso;
+    asignatura tempasign;
+    ArrayList <asignatura> asigns;
+    String sent, temporal_string, nsec, coldias;
     /**
      * Creates new form ListadoSemanal
      */
-    public ListadoSemanal() {
+    public ListadoSemanal(catedratico sesion) {
         initComponents();
-        
+        this.sesion = sesion;
+        con = new libreria_sql.Libreria_sql();
+        verificar = new asuntosDeTiempo();
         hoy = Date.valueOf(LocalDate.now());
         jDateChooser1.setDateFormatString("yyyy-MM-dd");
         jDateChooser1.setDate(hoy);
         jPanel2.setVisible(false);
-        
-        
+        modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);
+        jTable1.setModel(modelo);
     }
+    
+    public void llenar_combo(){
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Elija una Clase...");
+        for (seccion secc : seccs) {
+            for(asignatura asign : asigns){
+                if(secc.getId_asig().equals(asign.getCodigo_asig()) /*&& secc.getId_catedratico() == sesion.getCatedraticoid()*/){
+                   temporal_string = asign.getNombre_asig();
+                   this.jComboBox1.addItem(secc.getNumseccion() + " - " + temporal_string);
+                   break;
+                }
+            }   
+        }
+    }
+    
+    public void addSeccs(){
+        seccs = new ArrayList();
+        con.conectar();
+        sent = "select * from InfoSeccion where CatedraticoID = '"+sesion.getCatedraticoid()+"'";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempsecc = new seccion();
+                tempsecc.setNumseccion(regreso.getString("SeccionID"));
+                tempsecc.setId_asig(regreso.getString("AsignaturaID"));
+                tempsecc.setId_catedratico(regreso.getInt("CatedraticoID"));
+                tempsecc.setHi(regreso.getInt("Horai"));
+                tempsecc.setHf(regreso.getInt("Horaf"));
+                tempsecc.setFecha_i(LocalDate.parse(regreso.getString("Fechai")));
+                tempsecc.setFecha_f(LocalDate.parse(regreso.getString("Fechaf")));
+                tempsecc.setDias(regreso.getString("Dias"));
+                tempsecc.setFaltas_cated(regreso.getInt("DiasSinClase"));
+                seccs.add(tempsecc);
+            }
+            System.out.println(seccs.size());
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    public void addAsigns(){
+        asigns = new ArrayList();
+        con.conectar();
+        sent ="select AsignaturaID, Nombre from Asignatura ";
+        regreso = con.seleccionar(sent);
+        try {
+            while(regreso.next()){
+                tempasign = new asignatura();
+                tempasign.setCodigo_asig(regreso.getString("AsignaturaID"));
+                tempasign.setNombre_asig(regreso.getString("Nombre"));
+                asigns.add(tempasign);
+            }
+            llenar_combo();
+        } catch (SQLException ex) {
+            Logger.getLogger(Asistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            con.cerrar();
+        }
+    }
+    
     public void defsemana(){
+        semana = new ArrayList();
         fecha_cal=jDateChooser1.getDate();
         fecha_sql = new java.sql.Date(fecha_cal.getTime());
         fecha = fecha_sql.toLocalDate();
@@ -95,6 +174,14 @@ public class ListadoSemanal extends javax.swing.JFrame {
             }
             fecha = fecha.plusDays(1);
         }
+        semana.add(lunes);
+        for(int i=0; i<8; i++){
+            if(semana.get(i).getDayOfWeek().getValue() == sabado.getDayOfWeek().getValue()){
+                break;
+            }
+            semana.add(semana.get(i).plusDays(1));
+        }
+        
     }
     
     public void asigStyle(XSSFCell col, XSSFCellStyle si, XSSFCellStyle no, XSSFCellStyle cross){
@@ -110,7 +197,6 @@ public class ListadoSemanal extends javax.swing.JFrame {
     }
     
     public XSSFWorkbook crear_libro(){
-        defsemana();
         //plantilla del archivo
         abrir = new File("C:\\Plantillas\\AsistenciaAsigSemana.xlsx");
         try (FileInputStream entrada = new FileInputStream(abrir)){
@@ -151,8 +237,10 @@ public class ListadoSemanal extends javax.swing.JFrame {
             celda = fila.getCell(6);
             celda.setCellValue("Fecha: " + hoy.toString());*/
             fila = sheet.getRow(8);
-            celda = fila.getCell(1);
-            celda.setCellValue("Catedrático: Brénedin Enrique Núñez");
+            celda = fila.getCell(0);
+            celda.setCellValue(String.valueOf(jComboBox1.getSelectedItem()));
+            celda = fila.getCell(2);
+            celda.setCellValue("Catedrático: "+sesion.getNombre());
             
             //Escribiendo la semana
             fila = sheet.getRow(6);
@@ -239,6 +327,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -250,6 +339,9 @@ public class ListadoSemanal extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -308,15 +400,22 @@ public class ListadoSemanal extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instalaciones Electricas para IS-2000", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Clase:");
+
+        jButton2.setText("defsemana");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -328,12 +427,14 @@ public class ListadoSemanal extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton2)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(29, 29, 29)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(269, 269, 269)
                         .addComponent(jLabel2)))
@@ -362,7 +463,9 @@ public class ListadoSemanal extends javax.swing.JFrame {
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(21, 21, 21)
                 .addComponent(jButton3)
                 .addGap(37, 37, 37))
         );
@@ -416,9 +519,71 @@ public class ListadoSemanal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        defsemana();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            tempasign = new asignatura();
+            tempsecc = new seccion(); 
+            temporal_string = String.valueOf(jComboBox1.getSelectedItem());
+            if(temporal_string.equals("Elija una Clase...")){
+                
+            }
+            else{
+                nsec = temporal_string.substring(0, 4).trim();
+                temporal_string = temporal_string.substring(6).trim();
+                for(asignatura asign : asigns){
+                    if(temporal_string.equals(asign.getNombre_asig())){
+                        tempasign = asign;
+                        break;
+                    }
+                }
+                for(seccion secc : seccs){
+                    if(secc.getNumseccion().equals(nsec) && tempasign.getCodigo_asig().equals(secc.getId_asig())){
+                        tempsecc = secc;
+                        break;
+                    }
+                }
+                defsemana();
+                
+                coldias="";
+                for (LocalDate diasem : semana) {
+                    if(diasem.isBefore(LocalDate.now()) || diasem.isEqual(LocalDate.now())){   
+                        if(verificar.siToca2(tempsecc.getDias(), diasem)){
+                            coldias = coldias + "IFNULL((select a.Asistio from Asistencia where a.Fecha = "
+                                    + "'"+String.valueOf(diasem)+"'), 'N') as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+                        }else{
+                            coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+                        }
+                    }else{
+                        coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+                    }   
+                }
+                System.out.println(coldias);
+                con.conectar();
+                modelo = (DefaultTableModel)jTable1.getModel();
+                modelo.setRowCount(0);
+                jTable1.setModel(modelo);
+                
+                sent = "select al.Nombre, al.NumeroCuenta, "+coldias
+                        +"SUM(Asistio = 'N') as Faltas\n" +
+                        "from Alumno al\n" +
+                        "inner join Asistencia a\n" +
+                        "on al.NumeroCuenta = a.NumeroCuenta\n" +
+                        "inner join Asignatura ag\n" +
+                        "on a.AsignaturaID = ag.AsignaturaID\n" +
+                        "where a.AsignaturaID = '"+tempsecc.getId_asig()+"' "
+                        + "and a.SeccionID = '"+tempsecc.getNumseccion()+"'\n" +
+                        "group by a.NumeroCuenta\n"
+                        + "order by al.Nombre asc";
+                con.seleccionar_jtable(sent, jTable1);
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -450,12 +615,14 @@ public class ListadoSemanal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListadoSemanal().setVisible(true);
+                //new ListadoSemanal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;

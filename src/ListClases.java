@@ -82,7 +82,9 @@ public class ListClases extends javax.swing.JFrame {
             style.setBorderRight(BorderStyle.THIN);
             
             //Escribiendo el contenido de la tabla en el documento
-            
+            fila =sheet.getRow(7);
+            celda = fila.getCell(2);
+            celda.setCellValue("Catedrático: "+sesion.getNombre());
             //Modificando la tabla
             for(int i=0; i<modelo.getRowCount();i++){
                 filainicial = 9; //Primera fila de registros de la tabla de excel
