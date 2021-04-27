@@ -203,9 +203,9 @@ public class ListClases extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-macos-minimize-32.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-subtract-24.png")); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-macos-close-32.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-delete-24.png")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
@@ -229,7 +229,7 @@ public class ListClases extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(819, Short.MAX_VALUE)
+                .addContainerGap(835, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9))

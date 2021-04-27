@@ -434,9 +434,9 @@ public class InfDiario extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-macos-close-32.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-delete-24.png")); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-macos-minimize-32.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-subtract-24.png")); // NOI18N
 
         Boton1.setBackground(new java.awt.Color(255, 255, 255));
         Boton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -554,7 +554,7 @@ public class InfDiario extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(Boton1)
                 .addContainerGap())
         );
