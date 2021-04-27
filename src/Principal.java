@@ -133,14 +133,14 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-delete-24.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-delete-24.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-subtract-24.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-subtract-24.png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -172,7 +172,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-back-24.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-back-24.png"))); // NOI18N
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -247,17 +247,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\listadoclases.png")); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/listadoclases.png"))); // NOI18N
 
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\inasistencia25%.png")); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/inasistencia25%.png"))); // NOI18N
 
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\resumenparcial.png")); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/resumenparcial.png"))); // NOI18N
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\resumenasistencia.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/resumenasistencia.png"))); // NOI18N
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\listadosemanal.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/listadosemanal.png"))); // NOI18N
 
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\listadodiario.png")); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/listadodiario.png"))); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
@@ -283,8 +283,9 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(218, 238, 248));
-        jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(65, 105, 225));
+        jButton2.setText("Listado de Clases del Periodo");
         jButton2.setAutoscrolls(true);
         jButton2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -356,7 +357,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,10 +389,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
-
-        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\logos-UNAH-11.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -426,7 +425,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
-                        .addGap(0, 14, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -523,10 +522,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.getAccessibleContext().setAccessibleName("   Reportes");
         jLabel1.getAccessibleContext().setAccessibleDescription("");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\inicio.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/inicio.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\logos-UNAH-11.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logos-UNAH-11.png"))); // NOI18N
         jLabel12.setText("Ingenieria en Sistemas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -542,7 +541,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,8 +553,6 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
-
-        jLabel10.getAccessibleContext().setAccessibleName("");
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
