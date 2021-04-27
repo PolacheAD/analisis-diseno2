@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -44,7 +44,7 @@ public class InfDiario extends javax.swing.JFrame {
     File abrir;
     JFileChooser file;
     DefaultTableModel modelo;
-    LocalDate hoy, tempFecha;
+    LocalDate hoy, valifecha, tempFecha;
     int filainicial;
     int asistencia;
     int inasistencia;
@@ -576,35 +576,43 @@ public class InfDiario extends javax.swing.JFrame {
 
     private void Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton1ActionPerformed
         // TODO add your handling code here:
-        file = new JFileChooser();
-        file.showSaveDialog(this);
-        File guardar = file.getSelectedFile();
-        if(guardar!=null){
-            XSSFWorkbook aqui = crear_libro();
-            FileOutputStream fileOuS;
-            try {
-                if(guardar.getPath().contains("xlsx")){
-                     fileOuS= new FileOutputStream(guardar);
-                }else{
-                    fileOuS= new FileOutputStream(guardar+".xlsx");
+        if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+            file = new JFileChooser();
+            file.showSaveDialog(this);
+            File guardar = file.getSelectedFile();
+            if(guardar!=null){
+                XSSFWorkbook aqui = crear_libro();
+                FileOutputStream fileOuS;
+                try {
+                    if(guardar.getPath().contains("xlsx")){
+                         fileOuS= new FileOutputStream(guardar);
+                    }else{
+                        fileOuS= new FileOutputStream(guardar+".xlsx");
+                    }
+
+                    if (guardar.exists()) {// si el archivo existe se elimina
+                        guardar.delete();
+                        System.out.println("Archivo eliminado");
+                    }
+                    aqui.write(fileOuS);
+                    fileOuS.flush();
+                    fileOuS.close();
+                    JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
                 }
-                
-                if (guardar.exists()) {// si el archivo existe se elimina
-                    guardar.delete();
-                    System.out.println("Archivo eliminado");
-		}
-		aqui.write(fileOuS);
-		fileOuS.flush();
-		fileOuS.close();
-		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Por favor, elija una clase");
         }  
     }//GEN-LAST:event_Boton1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED){
+            modelo = (DefaultTableModel)jTable1.getModel();
+            modelo.setRowCount(0);
+            jTable1.setModel(modelo);
             tempasign = new asignatura();
             tempsecc = new seccion(); 
             temporal_string = String.valueOf(jComboBox1.getSelectedItem());
@@ -649,16 +657,23 @@ public class InfDiario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        con.conectar();
-        modelo = (DefaultTableModel)jTable1.getModel();
-        modelo.setRowCount(0);
-        jTable1.setModel(modelo);
-        sent = "select Nombre, NumeroCuenta, Asistencia from vAsistenciaDiaria "
-                + "where AsignaturaID = '"+jTextField1.getText()+"' and SeccionID = '"
-                +nsec+"' and Fecha = '"+jTextField2.getText()+"'";
-        con.seleccionar_jtable(sent, jTable1);
-        contarN();
-        contarS();
+        try{
+            valifecha = LocalDate.parse(jTextField2.getText());
+            con.conectar();
+            modelo = (DefaultTableModel)jTable1.getModel();
+            modelo.setRowCount(0);
+            jTable1.setModel(modelo);
+            sent = "select Nombre, NumeroCuenta, Asistencia from vAsistenciaDiaria "
+                    + "where AsignaturaID = '"+jTextField1.getText()+"' and SeccionID = '"
+                    +nsec+"' and Fecha = '"+jTextField2.getText()+"'";
+            con.seleccionar_jtable(sent, jTable1);
+            contarN();
+            contarS();
+        }
+        catch(DateTimeException x){
+            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de la fecha ingresada");
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed

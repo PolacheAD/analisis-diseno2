@@ -108,6 +108,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
     }
     public void llenar_asigns(){
         try {
+            jComboBox2.removeAllItems();
             con.conectar();
             temporal_string2 = "select AsignaturaID, Nombre from Asignatura";
             regreso = con.seleccionar(temporal_string2);
@@ -150,6 +151,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                 if(temporal_int != 1){
                     cell = cellIterator.next();
                     cell = cellIterator.next();
+                    //System.out.println(cell.getStringCellValue());
                     temporal_string = String.valueOf(BigDecimal.valueOf(cell.getNumericCellValue()));
                     cell = cellIterator.next();
                     temporal_string2 = cell.getStringCellValue();
@@ -164,6 +166,8 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
             Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(AgregarSecc.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex){
+            System.out.println(ex.getMessage());
         }
     }
     
@@ -283,6 +287,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -473,7 +478,8 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel11)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(350, 350, 350))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -483,8 +489,8 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel13)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(350, 350, 350))
+                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(115, 115, 115))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton1)
@@ -506,13 +512,13 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                             .addComponent(b4)
                             .addComponent(b6))
                         .addGap(40, 40, 40))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(311, 311, 311))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(324, 324, 324))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,9 +577,9 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -595,6 +601,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_b6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         temporal_s.setId_catedratico(sesion.getCatedraticoid());
         temporal_s.setId_asig(String.valueOf(jComboBox2.getSelectedItem()).substring(0,5).trim());
         temporal_s.setNumseccion(regresar_seccion(temporal_s.getId_asig()
@@ -622,6 +629,9 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
             else if(horas){
                 JOptionPane.showMessageDialog(this, "Error: horas no permitidas");
             }
+            else if(temporal_s.getDias().equals("")){
+                JOptionPane.showMessageDialog(this, "Por favor seleccione: días de clase"); 
+            }
             else{
                 temporal_s.setHi(hi);
                 temporal_s.setHf(hf);
@@ -645,6 +655,9 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
         } 
         catch(NumberFormatException r){
             JOptionPane.showMessageDialog(this, "Error al guardar fechas. Revise e intente de nuevo");
+        }
+        finally{
+            temporal_s.setDias("");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

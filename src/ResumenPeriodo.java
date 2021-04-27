@@ -378,32 +378,37 @@ public class ResumenPeriodo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        file = new JFileChooser();
-        file.showSaveDialog(this);
-        File guardar = file.getSelectedFile();
-        if(guardar!=null){
-            XSSFWorkbook aqui = crear_libro();
-            FileOutputStream fileOuS;
-            try {
-                if(guardar.getPath().contains("xlsx")){
-                     fileOuS= new FileOutputStream(guardar);
-                }else{
-                    fileOuS= new FileOutputStream(guardar+".xlsx");
+        if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+            file = new JFileChooser();
+            file.showSaveDialog(this);
+            File guardar = file.getSelectedFile();
+            if(guardar!=null){
+                XSSFWorkbook aqui = crear_libro();
+                FileOutputStream fileOuS;
+                try {
+                    if(guardar.getPath().contains("xlsx")){
+                         fileOuS= new FileOutputStream(guardar);
+                    }else{
+                        fileOuS= new FileOutputStream(guardar+".xlsx");
+                    }
+
+                    if (guardar.exists()) {// si el archivo existe se elimina
+                        guardar.delete();
+                        System.out.println("Archivo eliminado");
+                    }
+                    aqui.write(fileOuS);
+                    fileOuS.flush();
+                    fileOuS.close();
+                    JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
                 }
-                
-                if (guardar.exists()) {// si el archivo existe se elimina
-                    guardar.delete();
-                    System.out.println("Archivo eliminado");
-		}
-		aqui.write(fileOuS);
-		fileOuS.flush();
-		fileOuS.close();
-		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
             }
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, elija una clase");
         }
-        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged

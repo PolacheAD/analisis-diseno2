@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -41,7 +42,7 @@ public class ResumenParcial extends javax.swing.JFrame {
     File abrir;
     JFileChooser file;
     DefaultTableModel modelo;
-    LocalDate hoy;
+    LocalDate hoy, fechai, fechaf;
     int filainicial;
     
     seccion tempsecc;
@@ -447,54 +448,69 @@ public class ResumenParcial extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().equals("") == false && jTextField2.getText().equals("") == false){
-            con.conectar();
-            modelo = (DefaultTableModel)jTable1.getModel();
-            modelo.setRowCount(0);
-            jTable1.setModel(modelo);
-
-            sent = "select al.Nombre, al.NumeroCuenta, SUM(a.Asistio = 'S') as Asistencias, SUM(a.Asistio = 'N') as Inasistencias, count(e.NumeroCuenta) as Excusas\n" +
-                    "from Alumno al\n" +
-                    "inner join (select * from Asistencia where Fecha between '"+jTextField1.getText()+"' and '"+jTextField2.getText()+"') a\n" +
-                    "on al.NumeroCuenta = a.NumeroCuenta\n" +
-                    "left join (select * from Excusa where Fecha between '"+jTextField1.getText()+"' and '"+jTextField2.getText()+"') e\n" +
-                    "on al.NumeroCuenta = e.NumeroCuenta\n" +
-                    "inner join InfoSeccion sd\n" +
-                    "on  a.SeccionID = sd.SeccionID\n" +
-                    "where a.SeccionID = '"+tempsecc.getNumseccion()+"' and a.AsignaturaID = '"+tempsecc.getId_asig()+"'\n" +
-                    "group by sd.AsignaturaID, sd.SeccionID, al.Nombre, a.NumeroCuenta";
-            con.seleccionar_jtable(sent, jTable1);
-
-            file = new JFileChooser();
-            file.showSaveDialog(this);
-            File guardar = file.getSelectedFile();
-            if(guardar!=null){
-                XSSFWorkbook aqui = crear_libro();
-                FileOutputStream fileOuS;
-                try {
-                    if(guardar.getPath().contains("xlsx")){
-                         fileOuS= new FileOutputStream(guardar);
-                    }else{
-                        fileOuS= new FileOutputStream(guardar+".xlsx");
-                    }
-
-                    if (guardar.exists()) {// si el archivo existe se elimina
-                        guardar.delete();
-                        System.out.println("Archivo eliminado");
-                    }
-                    aqui.write(fileOuS);
-                    fileOuS.flush();
-                    fileOuS.close();
-                    JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
-                }
+        try{
+            fechai =LocalDate.parse(jTextField1.getText());
+            fechaf =LocalDate.parse(jTextField2.getText());
+            if(jTextField1.getText().equals("") && jTextField2.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese ambas fechas");
             }
-            this.dispose();
+            else if(fechai.isAfter(fechaf)){
+                JOptionPane.showMessageDialog(null, "Error: fechas no permitidas.");
+            }
+            else if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+                JOptionPane.showMessageDialog(this, "Por favor, elija una clase");
+            }
+            else{
+                
+                con.conectar();
+                modelo = (DefaultTableModel)jTable1.getModel();
+                modelo.setRowCount(0);
+                jTable1.setModel(modelo);
+
+                sent = "select al.Nombre, al.NumeroCuenta, SUM(a.Asistio = 'S') as Asistencias, SUM(a.Asistio = 'N') as Inasistencias, count(e.NumeroCuenta) as Excusas\n" +
+                        "from Alumno al\n" +
+                        "inner join (select * from Asistencia where Fecha between '"+jTextField1.getText()+"' and '"+jTextField2.getText()+"') a\n" +
+                        "on al.NumeroCuenta = a.NumeroCuenta\n" +
+                        "left join (select * from Excusa where Fecha between '"+jTextField1.getText()+"' and '"+jTextField2.getText()+"') e\n" +
+                        "on al.NumeroCuenta = e.NumeroCuenta\n" +
+                        "inner join InfoSeccion sd\n" +
+                        "on  a.SeccionID = sd.SeccionID\n" +
+                        "where a.SeccionID = '"+tempsecc.getNumseccion()+"' and a.AsignaturaID = '"+tempsecc.getId_asig()+"'\n" +
+                        "group by sd.AsignaturaID, sd.SeccionID, al.Nombre, a.NumeroCuenta";
+                con.seleccionar_jtable(sent, jTable1);
+
+                file = new JFileChooser();
+                file.showSaveDialog(this);
+                File guardar = file.getSelectedFile();
+                if(guardar!=null){
+                    XSSFWorkbook aqui = crear_libro();
+                    FileOutputStream fileOuS;
+                    try {
+                        if(guardar.getPath().contains("xlsx")){
+                             fileOuS= new FileOutputStream(guardar);
+                        }else{
+                            fileOuS= new FileOutputStream(guardar+".xlsx");
+                        }
+
+                        if (guardar.exists()) {// si el archivo existe se elimina
+                            guardar.delete();
+                            System.out.println("Archivo eliminado");
+                        }
+                        aqui.write(fileOuS);
+                        fileOuS.flush();
+                        fileOuS.close();
+                        JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, "Hubo un error con la creación de la hoja. Intente nuevamente");
+                    }
+                }
+                this.dispose();
+            }
+        }catch(DateTimeException x){
+            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de las fechas ingresadas");
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Por favor ingrese ambas fechas");
-        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

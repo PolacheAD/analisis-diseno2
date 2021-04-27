@@ -339,7 +339,6 @@ public class ListadoSemanal extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -410,13 +409,6 @@ public class ListadoSemanal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));
         jLabel3.setText("Clase:");
 
-        jButton2.setText("defsemana");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -427,14 +419,12 @@ public class ListadoSemanal extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton2)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(29, 29, 29)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(269, 269, 269)
                         .addComponent(jLabel2)))
@@ -463,9 +453,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(37, 37, 37))
         );
@@ -491,38 +479,38 @@ public class ListadoSemanal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        file = new JFileChooser();
-        file.showSaveDialog(this);
-        File guardar = file.getSelectedFile();
-        if(guardar!=null){
-            XSSFWorkbook aqui = crear_libro();
-            FileOutputStream fileOuS;
-            try {
-                if(guardar.getPath().contains("xlsx")){
-                     fileOuS= new FileOutputStream(guardar);
-                }else{
-                    fileOuS= new FileOutputStream(guardar+".xlsx");
-                }
-                
-                if (guardar.exists()) {// si el archivo existe se elimina
-                    guardar.delete();
-                    System.out.println("Archivo eliminado");
-		}
-		aqui.write(fileOuS);
-		fileOuS.flush();
-		fileOuS.close();
-		JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
-            } catch (IOException ex) {
-                System.out.println("Error");
-            }
-        }
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+            file = new JFileChooser();
+            file.showSaveDialog(this);
+            File guardar = file.getSelectedFile();
+            if(guardar!=null){
+                XSSFWorkbook aqui = crear_libro();
+                FileOutputStream fileOuS;
+                try {
+                    if(guardar.getPath().contains("xlsx")){
+                         fileOuS= new FileOutputStream(guardar);
+                    }else{
+                        fileOuS= new FileOutputStream(guardar+".xlsx");
+                    }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        defsemana();
-    }//GEN-LAST:event_jButton2ActionPerformed
+                    if (guardar.exists()) {// si el archivo existe se elimina
+                        guardar.delete();
+                        System.out.println("Archivo eliminado");
+                    }
+                    aqui.write(fileOuS);
+                    fileOuS.flush();
+                    fileOuS.close();
+                    JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
+                } catch (IOException ex) {
+                    System.out.println("Error");
+                }
+            }
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor, elija una clase");
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
@@ -622,7 +610,6 @@ public class ListadoSemanal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;

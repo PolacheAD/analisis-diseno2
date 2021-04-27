@@ -114,7 +114,6 @@ public class registro extends javax.swing.JFrame {
         });
 
         contra.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        contra.setText("CONTRASEÑA");
         contra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 contraMouseEntered(evt);
@@ -122,7 +121,6 @@ public class registro extends javax.swing.JFrame {
         });
 
         contra_nuevamente.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        contra_nuevamente.setText("INGRESE NUEVAMENTE LA CONTRASEÑA");
         contra_nuevamente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 contra_nuevamenteMouseEntered(evt);
@@ -248,10 +246,11 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidoMouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     con.conectar();
+     if(nombre.getText().equals("") == false || apellido.getText().equals("")==false){
+      con.conectar();
       String contrase=String.valueOf(this.contra.getPassword());
       String contrase_repetir=String.valueOf(contra_nuevamente.getPassword());
-     nombrefull=nombre.getText().trim()+" "+apellido.getText().trim();
+      nombrefull=nombre.getText().trim()+" "+apellido.getText().trim();
      
        existe = "select * from Catedratico where Correo = \"" +correo.getText()+"\"";
       
@@ -274,7 +273,7 @@ public class registro extends javax.swing.JFrame {
                 
             
             }
-                else{correo.setText("CORREO YA EXISTE");
+                else{JOptionPane.showMessageDialog(null,"Este correo ya se encuentra registrado.");
             diseno4=0;
             }
             
@@ -285,7 +284,8 @@ public class registro extends javax.swing.JFrame {
           
            
               if (numero(contrase)) {
-                    contra.setText("INGRESE NUEVAMENTE");
+                    JOptionPane.showMessageDialog(null,"Su contraseña no debe contener espacios, debe contener "
+                            + "siete o más caracteres y debe contener al menos un número.");
                     contra_nuevamente.setText("");
                     diseno5=0;
                 }
@@ -294,13 +294,14 @@ public class registro extends javax.swing.JFrame {
                
                  if(contrase.equals(contrase_repetir)){
                  
-                    if(nickname(correo.getText())){correo.setText("INGRESE NUEVAMENTE CORREO");} 
+                    if(nickname(correo.getText())){JOptionPane.showMessageDialog(null,"Revise que su correo no tenga espacios y contenga una @");} 
                     else{
                    con.insertar(accion);
                    con.cerrar();
-                   JOptionPane.showMessageDialog(null,"SE HA REGISTRADO SACTIFACTORIAMENTE ");
+                   JOptionPane.showMessageDialog(null,"Se ha registrado satisfactoriamente.");
                    nombre.setText("");
                    apellido.setText("");
+                   correo.setText("");
                    contra.setText("");
                    contra_nuevamente.setText("");
                     }
@@ -308,7 +309,7 @@ public class registro extends javax.swing.JFrame {
                  }
                  else{
                  
-                 contra_nuevamente.setText("INGRESE NUEVAMENTE");
+                 JOptionPane.showMessageDialog(null,"Las contraseñas no coinciden.");
                  diseno6=0;
                  }
                   
@@ -319,7 +320,9 @@ public class registro extends javax.swing.JFrame {
             
         }
         
-       
+     }else{
+         JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre y apellido.");
+     }
          
         
         
@@ -392,10 +395,10 @@ public class registro extends javax.swing.JFrame {
     else{
        if(nick.contains(" ")){}
        else{
-        
-            
-        
-           bool=false;
+        if(nick.contains("@")==false){}
+        else{
+            bool=false;
+        } 
        }
     }
     return bool;
