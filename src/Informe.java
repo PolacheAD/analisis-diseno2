@@ -76,7 +76,7 @@ public class Informe extends javax.swing.JInternalFrame {
         jComboBox1.addItem("Elija una clase...");
         for(seccion secc : asistencia.seccs){
             for(asignatura asig : asistencia.asigns){
-                if(secc.getId_catedratico() == sesion.getId_cated() && secc.getId_asig().equals(asig.getCodigo_asig())){
+                if(secc.getId_catedratico() == sesion.getCatedraticoid() && secc.getId_asig().equals(asig.getCodigo_asig())){
                     jComboBox1.addItem(secc.getNumseccion()+" - "+asig.getNombre_asig());
                     break;
                 }
@@ -531,7 +531,7 @@ public class Informe extends javax.swing.JInternalFrame {
                 for(asignatura asign : asistencia.asigns){
                     if(jTextField2.getText().equals(asign.getNombre_asig())){               
                         jTextField1.setText(asign.getCodigo_asig());
-                        jTextField4.setText(String.valueOf(asign.getUv()));
+                        jTextField4.setText("");
                         break;
                     }
                 }

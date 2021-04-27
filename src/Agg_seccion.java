@@ -648,8 +648,8 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
                     }  
                 }
                 for (asignatura asig : asistencia.asigns){
-                    if(asig.getId_depto() == temporal_depto.getId_depto()){
-                        this.jComboBox2.addItem(asig.getCodigo_asig() + " - " + asig.getNombre_asig());
+                    if( true){
+                        //this.jComboBox2.addItem(asig.getCodigo_asig() + " - " + asig.getNombre_asig());
                     }
                 }
             }
@@ -742,7 +742,7 @@ public class Agg_seccion extends javax.swing.JInternalFrame {
             else{
                 for (asignatura asig : asistencia.asigns){
                     if(asig.getNombre_asig().equals(temporal_string)){
-                        jTextField7.setText(String.valueOf(asig.getUv()));
+                        jTextField7.setText("");
                     }
                 }
             }
