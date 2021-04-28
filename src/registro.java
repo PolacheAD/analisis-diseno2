@@ -257,7 +257,10 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidoMouseEntered
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     if(nombre.getText().equals("") == false || apellido.getText().equals("")==false){
+    if(nombre.getText().equals("") || apellido.getText().equals("")){
+        JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre y apellido.");
+    }
+      else{
       con.conectar();
       String contrase=String.valueOf(this.contra.getPassword());
       String contrase_repetir=String.valueOf(contra_nuevamente.getPassword());
@@ -332,11 +335,7 @@ public class registro extends javax.swing.JFrame {
             
         }
         
-     }else{
-         JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre y apellido.");
-     }
-         
-        
+     }    
         
         
         
