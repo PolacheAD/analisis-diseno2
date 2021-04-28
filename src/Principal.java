@@ -444,8 +444,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(226, 202, 22));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(57, 146, 224));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-password-reset-100.png"))); // NOI18N
         jLabel3.setText("<html>Cambiar </br>Contraseña</html>");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -456,8 +456,8 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(217, 212, 212));
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(57, 146, 224));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-brief-100.png"))); // NOI18N
         jLabel1.setText("  Reportes");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -471,8 +471,8 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel4.setBackground(new java.awt.Color(227, 225, 225));
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(57, 146, 224));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-add-folder-100.png"))); // NOI18N
         jLabel4.setText(" Crear Clase");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -483,8 +483,8 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel5.setBackground(new java.awt.Color(226, 225, 221));
-        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(57, 146, 224));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-add-list-100.png"))); // NOI18N
         jLabel5.setText("Iniciar Clase");
         jLabel5.setToolTipText("");
@@ -495,8 +495,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(81, 152, 224));
+        jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(57, 146, 224));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logout.png"))); // NOI18N
         jLabel19.setText(" Cerrar Sesión");
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
