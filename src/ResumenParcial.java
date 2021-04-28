@@ -507,7 +507,7 @@ public class ResumenParcial extends javax.swing.JFrame {
                 this.dispose();
             }
         }catch(DateTimeException x){
-            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de las fechas ingresadas");
+            JOptionPane.showMessageDialog(this, "Por favor revise la coherencia de las fechas ingresadas");
         }
         
         

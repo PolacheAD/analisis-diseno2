@@ -270,20 +270,20 @@ public class Login extends javax.swing.JFrame {
                 inicio.setVisible(true);
                 this.setVisible(false);
             }else if(String.valueOf(jPasswordField1.getPassword()).equals("")){
-                JOptionPane.showMessageDialog(null,"Por favor ingrese su usuario y contraseña");
+                JOptionPane.showMessageDialog(null,"Por favor ingrese su usuario y contraseña.");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Contraseña incorrecta");
+                JOptionPane.showMessageDialog(null,"Usuario y/o contraseña incorrectos.");
                 jPasswordField1.setText("");
                 con.cerrar();
             }
         } catch (SQLException ex) {
             //Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             if(jTextField1.getText().equals("") || String.valueOf(jPasswordField1.getPassword()).equals("")){
-                JOptionPane.showMessageDialog(null,"Por favor ingrese su usuario y contraseña");
+                JOptionPane.showMessageDialog(null,"Por favor ingrese su usuario y contraseña.");
             }
             else{
-                JOptionPane.showMessageDialog(null,"El usuario no existe");
+                JOptionPane.showMessageDialog(null,"Usuario y/o contraseña incorrectos.");
             }
             jTextField1.setText("");
             jPasswordField1.setText("");

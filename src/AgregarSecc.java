@@ -642,13 +642,13 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Error al asignar sección");
             }
             else if(estud==false){
-                JOptionPane.showMessageDialog(this, "Error: sin estudiantes");
+                JOptionPane.showMessageDialog(this, "Aún no se han añadido estudiantes.");
             }
             else if(inicio.isAfter(fin) || inicio.isEqual(fin) || inicio.isBefore(localDate)){
-                JOptionPane.showMessageDialog(this, "Error: fechas no permitidas");
+                JOptionPane.showMessageDialog(this, "No se permite una fecha inicial anterior a la fecha actual o a la fecha final. Revise e intente de nuevo.");
             }               
             else if(horas){
-                JOptionPane.showMessageDialog(this, "Error: horas no permitidas");
+                JOptionPane.showMessageDialog(this, "Por favor revise la coherencia de las horas inicial y final");
             }
             else if(temporal_s.getDias().equals("")){
                 JOptionPane.showMessageDialog(this, "Por favor seleccione: días de clase"); 
@@ -668,14 +668,14 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
             }     
         } 
         catch(DateTimeException x){
-            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de las fechas ingresadas");
+            JOptionPane.showMessageDialog(this, "Por favor revise la consistencia de las fechas ingresadas.");
         }
         catch(NullPointerException e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Por favor seleccione: días de clase");          
+            JOptionPane.showMessageDialog(this, "Por favor seleccione días de clase.");          
         } 
         catch(NumberFormatException r){
-            JOptionPane.showMessageDialog(this, "Error al guardar fechas. Revise e intente de nuevo");
+            JOptionPane.showMessageDialog(this, "Error al guardar fechas. Por favor revíselas e intente de nuevo.");
         }
         finally{
             temporal_s.setDias("");
