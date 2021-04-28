@@ -444,7 +444,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(81, 152, 224));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icons8-password-reset-100.png"))); // NOI18N
-        jLabel3.setText("Cambiar \nContraseña");
+        jLabel3.setText("<html>Cambiar </br>Contraseña</html>");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -515,7 +515,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
-                .addComponent(jLabel3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(155, 155, 155))
         );
 

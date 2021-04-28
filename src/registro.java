@@ -315,6 +315,7 @@ public class registro extends javax.swing.JFrame {
                    correo.setText("");
                    contra.setText("");
                    contra_nuevamente.setText("");
+                   this.setVisible(false);
                     }
                     
                  }

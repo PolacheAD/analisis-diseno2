@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 //import java.sql.Connection;
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -30,6 +28,28 @@ public class Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         registro=new registro();
                 //System.out.println(re.getForeground().getRGB());
+        jPasswordField1.addKeyListener(new KeyAdapter() 
+        {
+            @Override
+            public void keyPressed(KeyEvent evt)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    inicio();
+                }
+            }
+        });
+        jButton1.addKeyListener(new KeyAdapter() 
+        {
+            @Override
+            public void keyPressed(KeyEvent evt)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    inicio();
+                }
+            }
+        });
     }
   
     registro registro;
@@ -249,6 +269,8 @@ public class Login extends javax.swing.JFrame {
                 inicio = new Principal(sesion,this);
                 inicio.setVisible(true);
                 this.setVisible(false);
+            }else if(String.valueOf(jPasswordField1.getPassword()).equals("")){
+                JOptionPane.showMessageDialog(null,"Por favor ingrese su usuario y contraseña");
             }
             else{
                 JOptionPane.showMessageDialog(null,"Contraseña incorrecta");

@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -64,6 +65,8 @@ public class ListadoSemanal extends javax.swing.JFrame {
     asignatura tempasign;
     ArrayList <asignatura> asigns;
     String sent, temporal_string, nsec, coldias;
+    XSSFColor blanco;
+    XSSFFont fuente;
     /**
      * Creates new form ListadoSemanal
      */
@@ -183,15 +186,78 @@ public class ListadoSemanal extends javax.swing.JFrame {
         }
         
     }
-    
-    public void asigStyle(XSSFCell col, XSSFCellStyle si, XSSFCellStyle no, XSSFCellStyle cross){
-        if(col.getStringCellValue().equals("S")){
+    public void llenar_table(){
+        defsemana();
+        coldias="";
+        for (LocalDate diasem : semana) {
+            if(diasem.isBefore(LocalDate.now()) || diasem.isEqual(LocalDate.now())){   
+                if(verificar.siToca2(tempsecc.getDias(), diasem)){
+                    coldias = coldias + "IFNULL((select a.Asistio from Asistencia where a.Fecha = "
+                            + "'"+String.valueOf(diasem)+"'), 'N') as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+                }else{
+                    coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+                }
+            }else{
+                coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
+            }   
+        }
+        System.out.println(coldias);
+        con.conectar();
+        modelo = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(0);
+        jTable1.setModel(modelo);
+
+        /*sent = "select al.Nombre, al.NumeroCuenta, "+coldias
+                +"SUM(Asistio = 'N') as Faltas\n" +
+                "from Alumno al\n" +
+                "inner join Asistencia a\n" +
+                "on al.NumeroCuenta = a.NumeroCuenta\n" +
+                "inner join Asignatura ag\n" +
+                "on a.AsignaturaID = ag.AsignaturaID\n" +
+                "where a.AsignaturaID = '"+tempsecc.getId_asig()+"' "
+                + "and a.SeccionID = '"+tempsecc.getNumseccion()+"'\n" +
+                "group by a.NumeroCuenta\n"
+                + "order by al.Nombre asc";*/
+        sent = "select al.Nombre, \n" +
+"       al.NumeroCuenta,\n" +
+"       L.Asistio as Lu,\n" +
+"       Mar.Asistio as Ma,\n" +
+"       Mie.Asistio as Mi,\n" +
+"       J.Asistio as Ju,\n" +
+"       '-' as Vi,\n" +
+"       '-' as Sa,\n" +
+"       SUM(a.Asistio = 'N') as Faltas\n" +
+"from Alumno al\n" +
+"inner join Asistencia a\n" +
+"on al.NumeroCuenta = a.NumeroCuenta\n" +
+"inner join Asignatura ag\n" +
+"on a.AsignaturaID = ag.AsignaturaID\n" +
+"inner join(select NumeroCuenta, Asistio from Asistencia where Fecha = '2021-04-19') as L on L.NumeroCuenta = al.NumeroCuenta\n" +
+"inner join(select NumeroCuenta, Asistio from Asistencia where Fecha = '2021-04-20') as Mar on Mar.NumeroCuenta = al.NumeroCuenta\n" +
+"inner join(select NumeroCuenta, Asistio from Asistencia where Fecha = '2021-04-21') as Mie on Mie.NumeroCuenta = al.NumeroCuenta\n" +
+"inner join(select NumeroCuenta, Asistio from Asistencia where Fecha = '2021-04-22') as J on J.NumeroCuenta = al.NumeroCuenta\n" +
+"where a.AsignaturaID = 'IS702' and a.SeccionID = '2000'\n" +
+"group by a.NumeroCuenta\n" +
+"order by al.Nombre asc";
+        con.seleccionar_jtable(sent, jTable1);
+    }
+    public void asigStyle(XSSFCell col,String a, XSSFCellStyle si, XSSFCellStyle no, XSSFCellStyle cross){
+        /*if(col.getStringCellValue().equals("S")){
             col.setCellStyle(si);
         }
         if(col.getStringCellValue().equals("N")){
             col.setCellStyle(no);
         }
         if(col.getStringCellValue().equals("X")){
+            col.setCellStyle(cross);
+        }*/
+        if(a.equals("S")){
+            col.setCellStyle(si);
+        }
+        if(a.equals("N")){
+            col.setCellStyle(no);
+        }
+        if(a.equals("X")){
             col.setCellStyle(cross);
         }
     }
@@ -201,8 +267,9 @@ public class ListadoSemanal extends javax.swing.JFrame {
         abrir = new File("C:\\Plantillas\\AsistenciaAsigSemana.xlsx");
         try (FileInputStream entrada = new FileInputStream(abrir)){
             libro= new XSSFWorkbook(entrada);
-            verde = new XSSFColor(new java.awt.Color(164,218,179),null);
-            rojo = new XSSFColor(new java.awt.Color(255,128,128),null);
+            verde = new XSSFColor(new java.awt.Color(0,35,102),null);
+            rojo = new XSSFColor(new java.awt.Color(255,223,0),null);
+            blanco = new XSSFColor(new java.awt.Color(255,255,255),null);
             gris = new XSSFColor(new java.awt.Color(217,217,217),null);
             sheet = libro.getSheetAt(0);
             modelo = (DefaultTableModel) jTable1.getModel();
@@ -268,33 +335,33 @@ public class ListadoSemanal extends javax.swing.JFrame {
                 
                 //Lu
                 celda = fila.getCell(2);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 2)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 2)));
+                asigStyle(celda, String.valueOf(modelo.getValueAt(i, 2)), styleS, styleN, styleX);
                 
                 //Ma
                 celda = fila.getCell(3);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 3)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 3)));
+                asigStyle(celda, String.valueOf(modelo.getValueAt(i, 3)),styleS, styleN, styleX);
                 
                 //Mi
                 celda = fila.getCell(4);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 4)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 4)));
+                asigStyle(celda,String.valueOf(modelo.getValueAt(i, 4)), styleS, styleN, styleX);
                 
                 //Ju
                 celda = fila.getCell(5);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 5)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 5)));
+                asigStyle(celda,String.valueOf(modelo.getValueAt(i, 5)), styleS, styleN, styleX);
                 
                 //Vi
                 celda = fila.getCell(6);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 6)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 6)));
+                asigStyle(celda, String.valueOf(modelo.getValueAt(i, 6)),styleS, styleN, styleX);
                 
                 //Sa
                 celda = fila.getCell(7);
-                celda.setCellValue(String.valueOf(modelo.getValueAt(i, 7)));
-                asigStyle(celda, styleS, styleN, styleX);
+                //celda.setCellValue(String.valueOf(modelo.getValueAt(i, 7)));
+                asigStyle(celda,String.valueOf(modelo.getValueAt(i, 7)), styleS, styleN, styleX);
                 
                 //Faltas
                 celda = fila.getCell(8);
@@ -480,6 +547,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+            llenar_table();
             file = new JFileChooser();
             file.showSaveDialog(this);
             File guardar = file.getSelectedFile();
@@ -502,7 +570,7 @@ public class ListadoSemanal extends javax.swing.JFrame {
                     fileOuS.close();
                     JOptionPane.showMessageDialog(this,"Informe generado con éxito");                
                 } catch (IOException ex) {
-                    System.out.println("Error");
+                    JOptionPane.showMessageDialog(null,"Error al reemplazar archivo: La hoja de cálculo está abierta.");
                 }
             }
             this.dispose();
@@ -536,39 +604,6 @@ public class ListadoSemanal extends javax.swing.JFrame {
                         break;
                     }
                 }
-                defsemana();
-                
-                coldias="";
-                for (LocalDate diasem : semana) {
-                    if(diasem.isBefore(LocalDate.now()) || diasem.isEqual(LocalDate.now())){   
-                        if(verificar.siToca2(tempsecc.getDias(), diasem)){
-                            coldias = coldias + "IFNULL((select a.Asistio from Asistencia where a.Fecha = "
-                                    + "'"+String.valueOf(diasem)+"'), 'N') as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
-                        }else{
-                            coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
-                        }
-                    }else{
-                        coldias = coldias + "'-' as "+verificar.dia_letra(diasem.getDayOfWeek().getValue())+",";
-                    }   
-                }
-                System.out.println(coldias);
-                con.conectar();
-                modelo = (DefaultTableModel)jTable1.getModel();
-                modelo.setRowCount(0);
-                jTable1.setModel(modelo);
-                
-                sent = "select al.Nombre, al.NumeroCuenta, "+coldias
-                        +"SUM(Asistio = 'N') as Faltas\n" +
-                        "from Alumno al\n" +
-                        "inner join Asistencia a\n" +
-                        "on al.NumeroCuenta = a.NumeroCuenta\n" +
-                        "inner join Asignatura ag\n" +
-                        "on a.AsignaturaID = ag.AsignaturaID\n" +
-                        "where a.AsignaturaID = '"+tempsecc.getId_asig()+"' "
-                        + "and a.SeccionID = '"+tempsecc.getNumseccion()+"'\n" +
-                        "group by a.NumeroCuenta\n"
-                        + "order by al.Nombre asc";
-                con.seleccionar_jtable(sent, jTable1);
             }
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged

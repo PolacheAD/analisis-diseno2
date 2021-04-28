@@ -457,7 +457,7 @@ public class ResumenParcial extends javax.swing.JFrame {
             else if(fechai.isAfter(fechaf)){
                 JOptionPane.showMessageDialog(null, "Error: fechas no permitidas.");
             }
-            else if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...") == false){
+            else if(String.valueOf(jComboBox1.getSelectedItem()).equals("Elija una Clase...")){
                 JOptionPane.showMessageDialog(this, "Por favor, elija una clase");
             }
             else{
