@@ -72,6 +72,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
         locaDate = LocalDateTime.now();
         jButton1.setEnabled(false);
         jTextField1.setEditable(false);
+        asistieron=0;
         formato= DateTimeFormatter.ofPattern("uuuu-MM-dd")
                 .withResolverStyle(ResolverStyle.STRICT);
     }
@@ -595,7 +596,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
                                                 .addComponent(jTextField1)))))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(95, 95, 95))))
@@ -674,7 +675,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -777,6 +778,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
             System.out.println("Listo para empezar");
             //jLabel4.setText(asistieron + " de " +estuds.size()+ " estudiantes presentes");
             claseactiva = true;
+            jLabel4.setText(asistieron + " de " +estuds.size()+ " estudiantes presentes");
             initWebcam();
             jButton1.setEnabled(true);
             jTextField1.setEditable(true);
@@ -802,6 +804,7 @@ public class Asistencia extends javax.swing.JInternalFrame {
         jTextField6.setText("");
         jTextField1.setEditable(false);
         JOptionPane.showMessageDialog(null, "Clase finalizada.");
+        asistieron=0;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
