@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 /**
  *
  * @author Arnold
@@ -293,7 +294,18 @@ public class Login extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        inicio();
+        DialogWait wait = new DialogWait();
+        SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception { 
+                //Here you put your long-running process...
+                inicio();
+                wait.close();
+                return null;
+            }
+        };
+        mySwingWorker.execute();
+        wait.makeWait("Aviso", evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void reMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reMouseEntered

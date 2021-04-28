@@ -1,5 +1,4 @@
 
-import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Cell;
@@ -56,7 +56,6 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
     DateTimeFormatter formato;
     FileNameExtensionFilter filtro;
     asistenteCorreo.AsistenteCorreo enviar;
-    espera msj;
     boolean ejec;
     File abrir;
     /**
@@ -80,7 +79,6 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
         botones.add(b4);
         botones.add(b5);
         botones.add(b6);
-        msj = new espera();
     }
     public String regresar_seccion(String asig_id, String hi){
         try {
@@ -498,9 +496,12 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(420, 420, 420))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(420, 420, 420))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(114, 114, 114))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton1)
@@ -596,7 +597,7 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -660,7 +661,20 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
                 temporal_s.setFecha_f(fin);
                 this.agregar_seccion(temporal_s);
                 this.llenar_seccion();
-                correos();
+                DialogWait wait = new DialogWait();
+
+                SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception { 
+                        //Here you put your long-running process...
+                        correos();
+                        wait.close();
+                        return null;
+                    }
+                };
+                mySwingWorker.execute();
+                wait.makeWait("Aviso", evt);
+                
                 JOptionPane.showMessageDialog(this, "Sección "+temporal_s.getNumseccion()+" - "
                 + jComboBox2.getSelectedItem() + " creada con éxito.");
                 borrar_ing();
@@ -687,7 +701,18 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
         file.setFileFilter(filtro);
         file.showSaveDialog(this);
         abrir = file.getSelectedFile();
-        leer_estud(abrir);    
+        DialogWait wait = new DialogWait();
+        SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception { 
+                //Here you put your long-running process...
+                leer_estud(abrir); 
+                wait.close();
+                return null;
+            }
+        };
+        mySwingWorker.execute();
+        wait.makeWait("Aviso", evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
