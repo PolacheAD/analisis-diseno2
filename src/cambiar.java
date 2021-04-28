@@ -110,9 +110,9 @@ public class cambiar extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(81, 152, 224));
         jLabel11.setText("Vuelve a Escribir la Contraseña");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(42, 126, 211));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(81, 152, 224));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Guardar Cambios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

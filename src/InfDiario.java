@@ -307,7 +307,7 @@ public class InfDiario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(65, 105, 225));
-        jLabel1.setText("Listado/Resumen diario");
+        jLabel1.setText("Listado/resumen diario");
 
         jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
@@ -414,9 +414,9 @@ public class InfDiario extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(65, 105, 225));
         jLabel4.setText("Ingrese fecha:");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(42, 126, 211));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(65, 105, 225));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,9 +424,9 @@ public class InfDiario extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(42, 126, 211));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(65, 105, 225));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Clase anterior");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,9 +434,9 @@ public class InfDiario extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(42, 126, 211));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(65, 105, 225));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Clase siguiente");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,9 +446,9 @@ public class InfDiario extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N
 
-        Boton1.setBackground(new java.awt.Color(255, 255, 255));
+        Boton1.setBackground(new java.awt.Color(42, 126, 211));
         Boton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        Boton1.setForeground(new java.awt.Color(81, 152, 224));
+        Boton1.setForeground(new java.awt.Color(255, 255, 255));
         Boton1.setText("Generar Resumen");
         Boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -507,12 +507,9 @@ public class InfDiario extends javax.swing.JFrame {
                                         .addComponent(jButton3)
                                         .addGap(61, 61, 61)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton4)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jButton4)
+                                    .addComponent(jButton2))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))

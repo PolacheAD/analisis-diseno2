@@ -152,9 +152,9 @@ public class ListClases extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Listado de clases del período");
 
-        Boton1.setBackground(new java.awt.Color(255, 255, 255));
+        Boton1.setBackground(new java.awt.Color(42, 126, 211));
         Boton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        Boton1.setForeground(new java.awt.Color(65, 105, 225));
+        Boton1.setForeground(new java.awt.Color(255, 255, 255));
         Boton1.setText("Generar Documento de Excel");
         Boton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,10 +202,6 @@ public class ListClases extends javax.swing.JFrame {
         }
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logo3.png"))); // NOI18N
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-subtract-24.png")); // NOI18N
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\OD653\\Desktop\\Analisis\\icons8-delete-24.png")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(65, 105, 225));

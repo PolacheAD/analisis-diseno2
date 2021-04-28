@@ -447,8 +447,9 @@ public class ListadoSemanal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(65, 105, 225));
         jLabel1.setText("Listado semanal de asistencia de la clase");
 
+        jButton3.setBackground(new java.awt.Color(42, 126, 211));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(65, 105, 225));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Generar reporte");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

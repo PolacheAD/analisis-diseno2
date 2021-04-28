@@ -262,9 +262,9 @@ public class ResumenPeriodo extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(42, 126, 211));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(65, 105, 225));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Generar resumen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

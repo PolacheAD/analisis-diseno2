@@ -166,7 +166,7 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jLabel6)
         );
 
-        jPanel3.setBackground(new java.awt.Color(238, 255, 254));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setBackground(new java.awt.Color(226, 202, 22));
         jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 24)); // NOI18N
@@ -188,62 +188,38 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Sistema de registro de asistencia IS UNAH-VS");
 
-        jPanel5.setBackground(new java.awt.Color(226, 202, 22));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(42, 126, 211));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(65, 105, 225));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Estudiantes con inasistencia mayor al 25%");
         jButton4.setAutoscrolls(true);
         jButton4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton4MouseExited(evt);
-            }
-        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setBackground(new java.awt.Color(42, 126, 211));
         jButton5.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(65, 105, 225));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Resumen de asistencia del período por estudiante");
         jButton5.setAutoscrolls(true);
         jButton5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton5MouseExited(evt);
-            }
-        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setBackground(new java.awt.Color(42, 126, 211));
         jButton6.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(65, 105, 225));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Resumen de asistencia del parcial por estudiante");
         jButton6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton6MouseExited(evt);
-            }
-        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -262,21 +238,15 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/listadodiario.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(42, 126, 211));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(65, 105, 225));
-        jButton1.setText("Listado/Resumen Diario de asistencia de la clase ");
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Listado/resumen diario de asistencia de la clase ");
         jButton1.setAutoscrolls(true);
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton1MouseExited(evt);
             }
         });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -285,44 +255,28 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(218, 238, 248));
+        jButton2.setBackground(new java.awt.Color(42, 126, 211));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(65, 105, 225));
-        jButton2.setText("Listado de Clases del Periodo");
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Listado de clases del periodo");
         jButton2.setAutoscrolls(true);
         jButton2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
-            }
-        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(42, 126, 211));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(65, 105, 225));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Listado semanal de asistencia de la clase");
         jButton3.setAutoscrolls(true);
         jButton3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton3MouseExited(evt);
-            }
-        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -395,6 +349,8 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/logos-UNAH-11.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -441,7 +397,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(130, 209, 230));
 
-        jPanel4.setBackground(new java.awt.Color(226, 202, 22));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 20)); // NOI18N
@@ -737,66 +693,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        // TODO add your handling code here:
-        jButton1.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        // TODO add your handling code here:
-        jButton1.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton1MouseExited
-
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        // TODO add your handling code here:
-        jButton2.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        // TODO add your handling code here:
-        jButton2.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton2MouseExited
-
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        // TODO add your handling code here:
-         jButton3.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton3MouseEntered
-
-    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        // TODO add your handling code here:
-        jButton3.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton3MouseExited
-
-    private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
-        // TODO add your handling code here:
-         jButton6.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton6MouseEntered
-
-    private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
-        // TODO add your handling code here:
-         jButton6.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton6MouseExited
-
-    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
-        // TODO add your handling code here:
-         jButton5.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton5MouseEntered
-
-    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
-        // TODO add your handling code here:
-        jButton5.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton5MouseExited
-
-    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
-         jButton4.setBackground(Color.getHSBColor(238,255,254));
-    }//GEN-LAST:event_jButton4MouseEntered
-
-    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
-         jButton4.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jButton4MouseExited
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:

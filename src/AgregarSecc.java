@@ -364,9 +364,9 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(42, 126, 211));
         jButton2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(65, 105, 225));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Agregar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,9 +374,9 @@ public class AgregarSecc extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(42, 126, 211));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(65, 105, 225));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cargar lista...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -368,9 +368,9 @@ public class Asistencia extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(65, 105, 225));
         jLabel6.setText("Sección: ");
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(42, 126, 211));
         jButton3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(65, 105, 225));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Cerrar sesión");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,9 +451,9 @@ public class Asistencia extends javax.swing.JInternalFrame {
 
         jLabel4.setText(" ");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setBackground(new java.awt.Color(42, 126, 211));
         jButton5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(65, 105, 225));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Iniciar clase");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,9 +472,9 @@ public class Asistencia extends javax.swing.JInternalFrame {
         jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(42, 126, 211));
         jButton4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(65, 105, 225));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Finalizar Clase");
         jButton4.setToolTipText("");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -490,8 +490,9 @@ public class Asistencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(42, 126, 211));
         jButton1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(65, 105, 225));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
